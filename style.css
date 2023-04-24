@@ -20,7 +20,7 @@ body {
 .left-section {
   grid-area: 1 / 1 / 2 / 2;
 
-  border: 1px dashed blue;
+  border: 1px solid blue;
 
   display: flex;
   justify-content: center;
@@ -30,10 +30,10 @@ body {
 .middle-section {
   grid-area: 1 / 2 / 2 / 3;
   
-  border: 1px dashed blue;
+  border: 1px solid blue;
 
   display: grid;
-  grid-template-rows: 1fr 10fr;
+  grid-template-rows: 1fr 5fr;
 }
 
 .header {
@@ -60,7 +60,7 @@ body {
 .right-section {
   grid-area: 1 / 3 / 2 / 4;
 
-  border: 1px dashed blue;
+  border: 1px solid blue;
 
   display: flex;
   justify-content: center;
@@ -68,3 +68,4 @@ body {
   flex-direction: column;
 
 }
+
