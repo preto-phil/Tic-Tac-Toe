@@ -1,39 +1,34 @@
+
 //// Gameboard Object
-/* const gameBoard = (() => {
 
-  const body = document.getElementsByClassName('body');
-  const item1 = document.createElement('div').className('item-1');
-  const item2 = document.createElement('div').className('item-2');
-  const item3 = document.createElement('div').className('item-3');
-  const item4 = document.createElement('div').className('item-4');
-  const item5 = document.createElement('div').className('item-5');
-  const item6 = document.createElement('div').className('item-6');
-  const item7 = document.createElement('div').className('item-7');
-  const item8 = document.createElement('div').className('item-8');
-  const item9 = document.createElement('div').className('item-9');
+const gameBoard = (() => {
 
-  const gameboardArray = [
-    item1,
-    item2,
-    item3,
-    item4,
-    item5,
-    item6,
-    item7,
-    item8,
-    item9,
-  ];
+  function createGameBoard() {
+    const items = [];
+    const body = document.getElementById('body');
 
-  function createGameboard() {
-    for (let item in gameboardArray) {
-      body.append(item);
+    for (let i = 0; i < 9; i++) {
+      let number = i + 1;
+      let className = 'item-' + number;
+
+      items[i] = document.createElement('div');
+
+      items[i].classList.add(className);
+      items[i].textContent = number;
+      body.append(items[i]);
     };
   };
 
   return {
-    createGameBoard: createGameboard
+    createGameBoard: createGameBoard
   };
-}); */
+
+})();
+
+gameBoard.createGameBoard();
+
+
+
 
 /* gameBoard.createGameboard();
  */
@@ -179,21 +174,4 @@ body.append(item9); */
 
 
 
-function displayArray() {
-  const items = [];
-  const body = document.getElementById('body');
 
-  for (let i = 0; i < 9; i++) {
-    let number = i + 1;
-    let className = 'item-' + number;
-
-    items[i] = document.createElement('div');
-
-    items[i].classList.add(className);
-    items[i].textContent = number;
-    body.append(items[i]);
-  };
-  console.log(items)
-}
-
-displayArray();
