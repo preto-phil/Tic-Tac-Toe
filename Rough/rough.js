@@ -104,7 +104,61 @@ body.append(item9);
 
 //// Toggle Display
 function toggleDisplay() {
-  /*   if (player.getSign === 'X') { */
-      this.innerText = 'X';
-  /*   } */
+  if (player.getSign === 'X') {
+    this.innerText = 'X';
+  } else {
+    this.innerText = 'O';
   }
+};
+
+/// Display Controller
+function displayController() {
+  let round = 1;
+
+  function toggleDisplay() {
+    
+    let remainder = round % 2;;
+  
+    if (round < 10) {
+      if (remainder === 1) {
+        // display = player 1 turn
+        this.innerText = 'X';
+        round = round + 1;
+      } else {
+        // display player 2 turn
+        this.innerText = 'O';
+        round = round + 1;
+      }  
+    }
+  };
+};
+
+displayController();
+
+
+////
+const displayController = (() => {
+  let round = 1;
+
+  function toggleDisplay() {
+    
+    let remainder = round % 2;;
+  
+    if (round < 10) {
+      if (remainder === 1) {
+        // display = player 1 turn
+        this.innerText = 'X';
+        round = round + 1;
+      } else {
+        // display player 2 turn
+        this.innerText = 'O';
+        round = round + 1;
+      }  
+    }
+  };
+
+  return {
+    toggleDisplay: toggleDisplay
+  };
+
+})();
