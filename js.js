@@ -13,11 +13,9 @@ const gameBoard = (() => {
   
     if (round < 10) {
       if (remainder === 1) {
-        // display = player 1 turn
         this.innerText = 'X';
         round = round + 1;
       } else {
-        // display player 2 turn
         this.innerText = 'O';
         round = round + 1;
       }  
@@ -36,7 +34,8 @@ const gameBoard = (() => {
 
       items[i].classList.add(className);
       items[i].textContent = number;
-      items[i].addEventListener('click', toggleDisplay );
+      items[i].addEventListener('click', toggleDisplay);
+      /* items[i].addEventListener('click', turnPlayers); */
       body.append(items[i]);
     };
   };
@@ -52,6 +51,8 @@ const gameBoard = (() => {
 
 gameBoard.createGameBoard();
 console.log(gameBoard.gameBoardArray);
+
+
 
 
 // Factory Function to create player info
@@ -72,6 +73,10 @@ const player2 = player('P2', 'O'); // change that player inputs it in Phase 1
 
 //// Experimental Area
 
+const turnDiv = document.getElementById('turn');
+const turnText = turnDiv.innerHTML;
 
-
+if (turnText === '') {
+  turnDiv.innerHTML = 'Turn: Player X';
+}
 
