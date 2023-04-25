@@ -1,3 +1,6 @@
+
+/* General */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,6 +20,9 @@ body {
   font-family: monospace;
 }
 
+
+/* Left */
+
 .left-section {
   grid-area: 1 / 1 / 2 / 2;
 
@@ -28,7 +34,14 @@ body {
   flex-direction: column;
 }
 
+
+
+
+/* Middle */
+
 .middle-section {
+  height: 100vh;
+  
   grid-area: 1 / 2 / 2 / 3;
   
   border: 1px solid blue;
@@ -53,10 +66,18 @@ body {
 
   border: 1px solid white;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
+
+
+
+
+
+
+
+/* Right */
 
 .right-section {
   grid-area: 1 / 3 / 2 / 4;
