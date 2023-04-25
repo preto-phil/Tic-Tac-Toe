@@ -20,20 +20,15 @@ const gameBoard = (() => {
       if (remainder === 1) {
         this.innerText = 'X';
         round = round + 1;
+        toggleTurn();
       } else {
         this.innerText = 'O';
         round = round + 1;
+        toggleTurn();
       }  
     }
   };
   
-
-
-
-  // Display Turn Section
-
-
-
 
 
   // Toggle Turn Section
@@ -42,7 +37,7 @@ const gameBoard = (() => {
   function toggleTurn() {
     const turnDiv = document.getElementById('turn');
     let turnText = turnDiv.innerHTML;
-    
+
     if (turnText === 'Turn: Player O') {
       turnDiv.innerHTML = 'Turn: Player X';
     }
@@ -68,7 +63,7 @@ const gameBoard = (() => {
       items[i].classList.add(className);
       items[i].textContent = '';
       items[i].addEventListener('click', toggleDisplay);
-      items[i].addEventListener('click', toggleTurn);
+/*       items[i].addEventListener('click', toggleTurn); */
       body.append(items[i]);
     };
   };
