@@ -3,7 +3,12 @@
 
 const gameBoard = (() => {
 
+  // Array Declaration
+
   const items = [];
+
+
+  // Toggle Display Section
 
   let round = 1;
 
@@ -22,6 +27,34 @@ const gameBoard = (() => {
     }
   };
   
+
+
+
+  // Display Turn Section
+
+
+
+
+
+  // Toggle Turn Section
+
+
+  function toggleTurn() {
+    const turnDiv = document.getElementById('turn');
+    let turnText = turnDiv.innerHTML;
+    
+    if (turnText === 'Turn: Player O') {
+      turnDiv.innerHTML = 'Turn: Player X';
+    }
+    if (turnText === 'Turn: Player X') {
+      turnDiv.innerHTML = 'Turn: Player O';
+    }
+  }
+
+
+
+  // Create Game Board Section
+
   function createGameBoard() {
     
     const body = document.getElementById('body');
@@ -33,14 +66,16 @@ const gameBoard = (() => {
       items[i] = document.createElement('div');
 
       items[i].classList.add(className);
-      items[i].textContent = number;
+      items[i].textContent = '';
       items[i].addEventListener('click', toggleDisplay);
-      /* items[i].addEventListener('click', turnPlayers); */
+      items[i].addEventListener('click', toggleTurn);
       body.append(items[i]);
     };
   };
 
 
+
+  // Return Section
 
   return {
     createGameBoard: createGameBoard,
@@ -72,11 +107,4 @@ const player1 = player('P1', 'X'); // change that player inputs it in Phase 1
 const player2 = player('P2', 'O'); // change that player inputs it in Phase 1
 
 //// Experimental Area
-
-const turnDiv = document.getElementById('turn');
-const turnText = turnDiv.innerHTML;
-
-if (turnText === '') {
-  turnDiv.innerHTML = 'Turn: Player X';
-}
 
