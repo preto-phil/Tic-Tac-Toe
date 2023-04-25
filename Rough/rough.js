@@ -102,3 +102,9 @@ body.append(item9);
 
 
 
+//// Toggle Display
+function toggleDisplay() {
+  /*   if (player.getSign === 'X') { */
+      this.innerText = 'X';
+  /*   } */
+  }
