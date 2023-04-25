@@ -164,7 +164,7 @@ const displayController = (() => {
 })();
 
 //// Bloated BS code 
-/* 
+
 
 let item1 = document.getElementsByClassName('item-1');
 let item2 = document.getElementsByClassName('item-2');
@@ -241,4 +241,4 @@ if (
   item6.innerText === "X" 
 ) {
   console.log("You Win!")
-} */
+}

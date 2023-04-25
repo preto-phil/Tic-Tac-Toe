@@ -61,6 +61,7 @@ const gameBoard = (() => {
       items[i] = document.createElement('div');
 
       items[i].classList.add(className);
+      items[i].setAttribute('data-index', i);
       items[i].textContent = '';
       items[i].addEventListener('click', toggleDisplay);
 /*       items[i].addEventListener('click', toggleTurn); */
@@ -69,18 +70,19 @@ const gameBoard = (() => {
   };
 
 
-
   // Return Section
 
   return {
     createGameBoard: createGameBoard,
-    gameBoardArray: items
+    gameBoardArray: items,
+    getWinner: getWinner
   };
 
 })();
 
 gameBoard.createGameBoard();
 console.log(gameBoard.gameBoardArray);
+gameBoard.getWinner()
 
 
 
@@ -103,3 +105,20 @@ const player2 = player('P2', 'O'); // change that player inputs it in Phase 1
 
 //// Experimental Area
 
+// game logic
+
+
+let item1 = document.getElementsByClassName('item-1');
+let item1Value = item1.innerText;
+console.log(item1Value);
+let item2 = document.getElementsByClassName('item-2');
+let item3 = document.getElementsByClassName('item-3');
+
+// Win 1
+if (
+  item1.innerText === "X" &&
+  item2.innerText === "X" &&
+  item3.innerText === "X" 
+) {
+  console.log("You Win!")
+}
