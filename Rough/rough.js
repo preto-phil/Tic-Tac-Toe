@@ -162,3 +162,83 @@ const displayController = (() => {
   };
 
 })();
+
+//// Bloated BS code 
+/* 
+
+let item1 = document.getElementsByClassName('item-1');
+let item2 = document.getElementsByClassName('item-2');
+let item3 = document.getElementsByClassName('item-3');
+
+// Win 1
+if (
+  item1.outerText === "X" &&
+  item2.outerText === "X" &&
+  item3.outerText === "X" 
+) {
+  console.log("You Win!")
+}
+
+
+// Win 2
+if (
+  item3.innerText === "X" &&
+  item6.innerText === "X" &&
+  item9.innerText === "X" 
+) {
+  console.log("You Win!")
+}
+
+// Win 3
+if (
+  item7.innerText === "X" &&
+  item8.innerText === "X" &&
+  item9.innerText === "X" 
+) {
+  console.log("You Win!")
+}
+
+// Win 4
+if (
+  item1.innerText === "X" &&
+  item4.innerText === "X" &&
+  item7.innerText === "X" 
+) {
+  console.log("You Win!")
+}
+
+// Win 5
+if (
+  item1.innerText === "X" &&
+  item5.innerText === "X" &&
+  item9.innerText === "X" 
+) {
+  console.log("You Win!")
+}
+
+// Win 6
+if (
+  item3.innerText === "X" &&
+  item5.innerText === "X" &&
+  item7.innerText === "X" 
+) {
+  console.log("You Win!")
+}
+
+// Win 7
+if (
+  item2.innerText === "X" &&
+  item5.innerText === "X" &&
+  item8.innerText === "X" 
+) {
+  console.log("You Win!")
+}
+
+// Win 8
+if (
+  item4.innerText === "X" &&
+  item5.innerText === "X" &&
+  item6.innerText === "X" 
+) {
+  console.log("You Win!")
+} */
