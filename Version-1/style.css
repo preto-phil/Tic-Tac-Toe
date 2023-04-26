@@ -174,3 +174,9 @@ body {
 
 }
 
+#gridButton {
+  padding: 10px;
+  font-size: 2rem;
+  font-weight: 700;
+  cursor: pointer;
+}

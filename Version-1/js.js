@@ -30,35 +30,40 @@ const gameBoard = (() => {
       div.textContent = '';
       div.addEventListener('click', () => {
         
-        let remainder = round % 2;;
+        let roundRemainder = round % 2;
+        let gameRemainder = game % 2;
   
-        if (round < 10 && win === false) {
-          if (remainder === 1) {
-            div.innerText = 'X';
-    
-            items[i] = 'X';
-            console.log(items);
-    
-            toggleTurn();
-            winX();
-            toggleDraw();
-
-            round = round + 1;
-    
-          } else {
-            div.innerText = 'O';
-    
-            items[i] = 'O';
-            console.log(items);
-    
-            toggleTurn();
-            winO();
-            toggleDraw();
-
-            round = round + 1;
-    
-          }  
+        if (gameRemainder === 1) {
+          if (round < 10 && win === false) {
+            if (roundRemainder === 1) {
+              div.innerText = 'X';
+      
+              items[i] = 'X';
+              console.log(items);
+      
+              toggleTurn();
+              winX();
+              toggleDraw();
+  
+              round = round + 1;
+      
+            } else {
+              div.innerText = 'O';
+      
+              items[i] = 'O';
+              console.log(items);
+      
+              toggleTurn();
+              winO();
+              toggleDraw();
+  
+              round = round + 1;
+      
+            }  
+          }
         }
+
+
       });
       body.append(div);
     };
@@ -105,6 +110,7 @@ const gameBoard = (() => {
       console.log("Player X Wins!")
       win = true;
       winner = 'Player X Wins!';
+      game = game + 1;
       toggleWinner();
     };
   }
@@ -146,6 +152,7 @@ const gameBoard = (() => {
       console.log("Player O Wins!");
       win = true;
       winner = 'Player O Wins!';
+      game = game + 1;
       toggleWinner();
     };
   }
@@ -155,6 +162,7 @@ const gameBoard = (() => {
     
     if (win === true) {
       turnDiv.innerHTML = winner;
+      game = game + 1;
     }
   }
 
@@ -193,27 +201,10 @@ const gameBoard = (() => {
 gameBoard.createGameBoard();
 console.log(gameBoard.gameBoardArray);
 
-
-
-
-
-
-
-// Factory Function to create player info
-const player = (name, sign) => {
-  
-  const getName = () => name;
-  const getSign = () => sign;
-
-  return {
-    getName,
-    getSign
-  };
-
-};
-
-const player1 = player('P1', 'X'); // change that player inputs it in Phase 1
-const player2 = player('P2', 'O'); // change that player inputs it in Phase 1
-
-//// Experimental Area
-
+function resetBoard() {
+  const resetButton = document.getElementById('gridButton');
+  resetButton.addEventListener('click', () => {
+    round = 1;
+    gameBoard.createGameBoard();
+  })
+}

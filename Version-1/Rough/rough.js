@@ -386,3 +386,28 @@ if (
       }  
     }
   }; */  
+
+
+
+
+
+
+
+// Factory Function to create player info
+const player = (name, sign) => {
+  
+  const getName = () => name;
+  const getSign = () => sign;
+
+  return {
+    getName,
+    getSign
+  };
+
+};
+
+const player1 = player('P1', 'X'); // change that player inputs it in Phase 1
+const player2 = player('P2', 'O'); // change that player inputs it in Phase 1
+
+//// Experimental Area
+
