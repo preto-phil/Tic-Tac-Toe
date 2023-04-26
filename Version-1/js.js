@@ -10,6 +10,7 @@ const gameBoard = (() => {
   let win = false;
   let winner;
   let round = 1;
+  let game = 1;
 
   // Create Game Board Section
 
@@ -27,7 +28,6 @@ const gameBoard = (() => {
       div.classList.add('grid')
       div.setAttribute('data-index', i);
       div.textContent = '';
-/*    div.addEventListener('click', toggleDisplay);*/      
       div.addEventListener('click', () => {
         
         let remainder = round % 2;;
@@ -39,10 +39,11 @@ const gameBoard = (() => {
             items[i] = 'X';
             console.log(items);
     
-            round = round + 1;
             toggleTurn();
             winX();
+            toggleDraw();
 
+            round = round + 1;
     
           } else {
             div.innerText = 'O';
@@ -50,9 +51,11 @@ const gameBoard = (() => {
             items[i] = 'O';
             console.log(items);
     
-            round = round + 1;
             toggleTurn();
             winO();
+            toggleDraw();
+
+            round = round + 1;
     
           }  
         }
@@ -60,6 +63,7 @@ const gameBoard = (() => {
       body.append(div);
     };
   };
+
 
 
   // Winning Conditions
@@ -154,6 +158,15 @@ const gameBoard = (() => {
     }
   }
 
+  function toggleDraw() {
+    const turnDiv = document.getElementById('turn');
+
+    if (round === 9 && win === false) {
+      turnDiv.innerHTML = "Draw!";
+    }
+  }
+
+
   // Toggle Turn Section
 
   function toggleTurn() {
@@ -204,33 +217,3 @@ const player2 = player('P2', 'O'); // change that player inputs it in Phase 1
 
 //// Experimental Area
 
-  // Toggle Display Section
-
-/*   let round = 1; */
-
-  /* function toggleDisplay() {
-    
-    let remainder = round % 2;;
-  
-    if (round < 10) {
-      if (remainder === 1) {
-        this.innerText = 'X';
-
-        items[] = 'X';
-        console.log(items);
-
-        round = round + 1;
-        toggleTurn();
-
-      } else {
-        this.innerText = 'O';
-
-        items[i] = 'X';
-        console.log(items);
-
-        round = round + 1;
-        toggleTurn();
-
-      }  
-    }
-  }; */

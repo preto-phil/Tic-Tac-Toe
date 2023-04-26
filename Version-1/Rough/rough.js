@@ -351,3 +351,38 @@ if (
       }  
     }
   };
+
+ /*  // Toggle Display Section
+
+  function toggleDisplay() {
+    
+    let remainder = round % 2;;
+  
+    if (round < 10 && win === false) {
+      if (remainder === 1) {
+        div.innerText = 'X';
+
+        items[i] = 'X';
+        console.log(items);
+
+        toggleTurn();
+        winX();
+        toggleDraw();
+
+        round = round + 1;
+
+      } else {
+        div.innerText = 'O';
+
+        items[i] = 'O';
+        console.log(items);
+
+        toggleTurn();
+        winO();
+        toggleDraw();
+
+        round = round + 1;
+
+      }  
+    }
+  }; */  
