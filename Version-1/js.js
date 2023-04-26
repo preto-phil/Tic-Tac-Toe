@@ -1,11 +1,32 @@
 
-//// Gameboard Object
+//// Game board Object
 
 const gameBoard = (() => {
 
   // Array Declaration
 
-  const items = [];
+  const items = ['', '', '', '', '', '', '', '', ''];
+
+
+  // Create Game Board Section
+
+  function createGameBoard() {
+    
+    const body = document.getElementById('body');
+
+    for (let i = 0; i < 9; i++) {
+      let number = i + 1;
+      let className = 'item-' + number;
+
+      let div = document.createElement('div');
+
+      div.classList.add(className);
+      div.setAttribute('data-index', i);
+      div.textContent = '';
+      div.addEventListener('click', toggleDisplay);
+      body.append(div);
+    };
+  };
 
 
   // Toggle Display Section
@@ -19,6 +40,7 @@ const gameBoard = (() => {
     if (round < 10) {
       if (remainder === 1) {
         this.innerText = 'X';
+
         round = round + 1;
         toggleTurn();
       } else {
@@ -46,43 +68,19 @@ const gameBoard = (() => {
     }
   }
 
-
-
-  // Create Game Board Section
-
-  function createGameBoard() {
-    
-    const body = document.getElementById('body');
-
-    for (let i = 0; i < 9; i++) {
-      let number = i + 1;
-      let className = 'item-' + number;
-
-      items[i] = document.createElement('div');
-
-      items[i].classList.add(className);
-      items[i].setAttribute('data-index', i);
-      items[i].textContent = '';
-      items[i].addEventListener('click', toggleDisplay);
-/*       items[i].addEventListener('click', toggleTurn); */
-      body.append(items[i]);
-    };
-  };
-
-
   // Return Section
 
   return {
     createGameBoard: createGameBoard,
     gameBoardArray: items,
-    getWinner: getWinner
+    /* getWinner: getWinner */
   };
 
 })();
 
 gameBoard.createGameBoard();
 console.log(gameBoard.gameBoardArray);
-gameBoard.getWinner()
+/* gameBoard.getWinner() */
 
 
 

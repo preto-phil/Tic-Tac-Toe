@@ -1,4 +1,40 @@
 
+//// Two diff ways to create game board grid
+
+function createGameBoard() {
+    
+  const body = document.getElementById('body');
+
+  for (let i = 0; i < 9; i++) {
+    let number = i + 1;
+    let className = 'item-' + number;
+
+      items[i] = document.createElement('div');
+
+    items[i].classList.add(className);
+    items[i].setAttribute('data-index', i);
+    items[i].textContent = '';
+    items[i].addEventListener('click', toggleDisplay);
+    items[i].addEventListener('click', toggleTurn);
+    body.append(items[i]);
+
+    // VS
+
+    let div = document.createElement('div');
+
+    div.classList.add(className);
+    div.setAttribute('data-index', i);
+    div.textContent = '';
+    div.addEventListener('click', toggleDisplay);
+      items[i].addEventListener('click', toggleTurn);
+    body.append(div);
+    items.push(div);
+  };
+};
+
+
+
+
 // Experimental area
 
 function createGameboard() {
