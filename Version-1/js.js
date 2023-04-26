@@ -21,12 +21,26 @@ const gameBoard = (() => {
       let div = document.createElement('div');
 
       div.classList.add(className);
+      div.classList.add('grid')
       div.setAttribute('data-index', i);
       div.textContent = '';
       div.addEventListener('click', toggleDisplay);
       body.append(div);
     };
   };
+
+
+  // Experimentalism
+
+  function getIndex() {
+    let grid = document.querySelector('.grid');
+
+    console.log(grid.dataset.index);
+
+    // What i want to do is assign X or O to specific array item using index value
+
+  }
+
 
 
   // Toggle Display Section
@@ -40,6 +54,16 @@ const gameBoard = (() => {
     if (round < 10) {
       if (remainder === 1) {
         this.innerText = 'X';
+        
+/*        let thisIndex = this.index;
+        console.log(this.index);
+
+        items.push(thisIndex);
+        console.log(items); */
+
+/*         let grid = document.querySelector('.grid');
+
+        console.log(grid.dataset.index); */
 
         round = round + 1;
         toggleTurn();
@@ -47,11 +71,13 @@ const gameBoard = (() => {
         this.innerText = 'O';
         round = round + 1;
         toggleTurn();
+
+/*         let grid = document.querySelector('.grid');
+
+        console.log(grid.dataset.index); */
       }  
     }
   };
-  
-
 
   // Toggle Turn Section
 
@@ -106,7 +132,7 @@ const player2 = player('P2', 'O'); // change that player inputs it in Phase 1
 // game logic
 
 
-let item1 = document.getElementsByClassName('item-1');
+/* let item1 = document.getElementsByClassName('item-1');
 let item1Value = item1.innerText;
 console.log(item1Value);
 let item2 = document.getElementsByClassName('item-2');
@@ -119,4 +145,6 @@ if (
   item3.innerText === "X" 
 ) {
   console.log("You Win!")
-}
+};
+ */
+

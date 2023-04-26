@@ -1,5 +1,5 @@
 
-//// Two diff ways to create game board grid
+//// Two diff ways to create game board grid - both working
 
 function createGameBoard() {
     
@@ -33,9 +33,38 @@ function createGameBoard() {
 };
 
 
+  // Toggle Display Section with index incorporated - not working
+
+  let round = 1;
+
+  function toggleDisplay() {
+    
+    let remainder = round % 2;;
+  
+    if (round < 10) {
+      if (remainder === 1) {
+        this.innerText = 'X';
+        
+        let thisIndex = this.index;
+        console.log(this.index);
+
+        items.push(thisIndex);
+        console.log(items);
+
+        round = round + 1;
+        toggleTurn();
+      } else {
+        this.innerText = 'O';
+        round = round + 1;
+        toggleTurn();
+      }  
+    }
+  };
 
 
 // Experimental area
+
+// Bloated way of creating grid
 
 function createGameboard() {
 
