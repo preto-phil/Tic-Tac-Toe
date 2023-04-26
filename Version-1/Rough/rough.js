@@ -307,3 +307,47 @@ if (
 ) {
   console.log("You Win!")
 }
+
+
+//// Code Pollution
+
+  // Toggle Display Section
+
+  /* let round = 1; */
+  let i = round - 1;
+
+  function toggleDisplay() {
+    
+    let remainder = round % 2;;
+  
+    if (round < 10) {
+      if (remainder === 1) {
+        this.innerText = 'X';
+        items[i] = 'X';
+        console.log(items)
+/*        let thisIndex = this.index;
+        console.log(this.index);
+
+        items.push(thisIndex);
+        console.log(items); */
+
+/*         let grid = document.querySelector('.grid');
+
+        console.log(grid.dataset.index); */
+
+        round = round + 1;
+        toggleTurn();
+      } else {
+        this.innerText = 'O';
+        items[i] = 'X';
+        console.log(items)
+        round = round + 1;
+        toggleTurn();
+
+
+/*         let grid = document.querySelector('.grid');
+
+        console.log(grid.dataset.index); */
+      }  
+    }
+  };

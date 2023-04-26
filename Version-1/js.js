@@ -8,6 +8,8 @@ const gameBoard = (() => {
   const items = ['', '', '', '', '', '', '', '', ''];
 
 
+  let round = 1;
+
   // Create Game Board Section
 
   function createGameBoard() {
@@ -24,7 +26,34 @@ const gameBoard = (() => {
       div.classList.add('grid')
       div.setAttribute('data-index', i);
       div.textContent = '';
-      div.addEventListener('click', toggleDisplay);
+/*    div.addEventListener('click', toggleDisplay);*/      
+      div.addEventListener('click', () => {
+        
+        let remainder = round % 2;;
+  
+        if (round < 10) {
+          if (remainder === 1) {
+            div.innerText = 'X';
+    
+            items[i] = 'X';
+            console.log(items);
+    
+            round = round + 1;
+            toggleTurn();
+    
+          } else {
+            div.innerText = 'O';
+    
+            items[i] = 'O';
+            console.log(items);
+    
+            round = round + 1;
+            toggleTurn();
+    
+          }  
+        }
+      });
+      console.log(div.dataset.index);
       body.append(div);
     };
   };
@@ -32,52 +61,40 @@ const gameBoard = (() => {
 
   // Experimentalism
 
-  function getIndex() {
-    let grid = document.querySelector('.grid');
-
-    console.log(grid.dataset.index);
-
     // What i want to do is assign X or O to specific array item using index value
-
-  }
 
 
 
   // Toggle Display Section
 
-  let round = 1;
+/*   let round = 1; */
 
-  function toggleDisplay() {
+  /* function toggleDisplay() {
     
     let remainder = round % 2;;
   
     if (round < 10) {
       if (remainder === 1) {
         this.innerText = 'X';
-        
-/*        let thisIndex = this.index;
-        console.log(this.index);
 
-        items.push(thisIndex);
-        console.log(items); */
-
-/*         let grid = document.querySelector('.grid');
-
-        console.log(grid.dataset.index); */
+        items[] = 'X';
+        console.log(items);
 
         round = round + 1;
         toggleTurn();
+
       } else {
         this.innerText = 'O';
+
+        items[i] = 'X';
+        console.log(items);
+
         round = round + 1;
         toggleTurn();
 
-/*         let grid = document.querySelector('.grid');
-
-        console.log(grid.dataset.index); */
       }  
     }
-  };
+  }; */
 
   // Toggle Turn Section
 
