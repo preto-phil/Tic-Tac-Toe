@@ -5,7 +5,7 @@ const gameBoard = (() => {
 
   // Array Declaration
 
-  const items = ['', '', '', '', '', '', '', '', ''];
+  let items = ['', '', '', '', '', '', '', '', ''];
 
   let win = false;
   let winner;
@@ -62,7 +62,37 @@ const gameBoard = (() => {
             }  
           }
         }
+        if (gameRemainder === 0) {
+          if (round < 10 && win === false) {
+            if (roundRemainder === 1) {
 
+              div.innerText = 'O';
+      
+              items[i] = 'O';
+              console.log(items);
+      
+              toggleTurn();
+              winO();
+              toggleDraw();
+  
+              round = round + 1;
+
+            } else {
+
+              div.innerText = 'X';
+      
+              items[i] = 'X';
+              console.log(items);
+      
+              toggleTurn();
+              winX();
+              toggleDraw();
+  
+              round = round + 1;
+      
+            }  
+          }
+        }
 
       });
       body.append(div);
@@ -189,22 +219,30 @@ const gameBoard = (() => {
     }
   };
 
+
+/*   function resetBoard() {
+    const resetButton = document.getElementById('gridButton');
+    resetButton.addEventListener('click', () => {
+      round = 1;
+      items = ['', '', '', '', '', '', '', '', ''];
+      win = false;
+      createGameBoard();
+    })
+  } */
+  
+
   // Return Section
 
   return {
     createGameBoard: createGameBoard,
-    gameBoardArray: items,
+/*     resetBoard: resetBoard,
+ */    gameBoardArray: items,
   };
 
 })();
 
 gameBoard.createGameBoard();
-console.log(gameBoard.gameBoardArray);
+/* gameBoard.resetBoard();
+ */console.log(gameBoard.gameBoardArray);
 
-function resetBoard() {
-  const resetButton = document.getElementById('gridButton');
-  resetButton.addEventListener('click', () => {
-    round = 1;
-    gameBoard.createGameBoard();
-  })
-}
+
