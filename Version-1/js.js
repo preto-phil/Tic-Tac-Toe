@@ -6,9 +6,22 @@ const gameBoard = (() => {
   // Block variable declarations
 
   let win = false;
+  let draw = false;
   let winner;
   let round = 1;
   let game = 1;
+
+
+  // Toggle reset button to appear
+
+  function toggleFunction() {
+    const targetDiv = document.getElementById('gridButton');
+    if (win === true || draw === true) {
+      targetDiv.style.display = 'block';
+    } else {
+      targetDiv.style.display = 'none';
+    }
+  }
 
   // Toggle and Display Winner function
 
@@ -24,9 +37,11 @@ const gameBoard = (() => {
 
   function toggleDraw() {
     const turnDiv = document.getElementById('turn');
-
+    
     if (round === 9 && win === false) {
       turnDiv.innerHTML = 'Draw!';
+      draw = true;
+      toggleFunction();
     }
   }
 
@@ -49,6 +64,7 @@ const gameBoard = (() => {
     scoreDivO.innerText = oScore;
   }
 
+
   // Winning Conditions
 
   function winX() {
@@ -66,6 +82,7 @@ const gameBoard = (() => {
       xScore += 1;
       winner = 'Player X Wins!';
       toggleWinner();
+      toggleFunction();
     }
   }
 
@@ -84,6 +101,7 @@ const gameBoard = (() => {
       oScore += 1;
       winner = 'Player O Wins!';
       toggleWinner();
+      toggleFunction();
     }
   }
 
@@ -180,20 +198,24 @@ const gameBoard = (() => {
   function resetBoard() {
     const resetButton = document.getElementById('gridButton');
     resetButton.addEventListener('click', () => {
-      round = 1;
-      items = ['', '', '', '', '', '', '', '', ''];
-      win = false;
-      const body = document.getElementById('body');
-      while (body.firstChild) body.removeChild(body.firstChild);
-      createGameBoard();
-      game += 1;
-      toggleGame();
-      let gameRemainder = game % 2;
-      const turnDiv = document.getElementById('turn');
-      if (gameRemainder === 1) {
-        turnDiv.innerHTML = 'Turn: Player X';
-      } else {
-        turnDiv.innerHTML = 'Turn: Player O';
+      if (win === true || draw === true) {
+        round = 1;
+        items = ['', '', '', '', '', '', '', '', ''];
+        win = false;
+        draw = false;
+        const body = document.getElementById('body');
+        while (body.firstChild) body.removeChild(body.firstChild);
+        createGameBoard();
+        game += 1;
+        toggleGame();
+        let gameRemainder = game % 2;
+        const turnDiv = document.getElementById('turn');
+        if (gameRemainder === 1) {
+          turnDiv.innerHTML = 'Turn: Player X';
+        } else {
+          turnDiv.innerHTML = 'Turn: Player O';
+        }
+        resetButton.style.display = 'none';
       }
     });
   }
@@ -214,3 +236,6 @@ gameBoard.createGameBoard();
 gameBoard.resetBoard();
 gameBoard.toggleGame();
 gameBoard.addScore();
+
+
+// Toggle Reset
