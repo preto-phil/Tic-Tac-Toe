@@ -37,7 +37,6 @@ body {
 #gridButton {
   padding: 30px;
   font-size: 3rem;
-  font-weight: 700;
   cursor: pointer;
 
   background-color: rgb(20, 20, 20);
@@ -52,7 +51,6 @@ body {
 
 #game {
   font-size: 3rem;
-  font-weight: 700;
   padding: 30px;
   margin-bottom: 50px;
 }
@@ -69,7 +67,7 @@ body {
   /* border: 1px solid blue; */
 
   display: grid;
-  grid-template-rows: 1fr 1fr 6fr;
+  grid-template-rows: 1fr 1fr 6fr 0.2fr;
 }
 
 .header {
@@ -101,8 +99,8 @@ body {
   grid-area: 3 / 1 / 4 / 2;
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  grid-template-rows: repeat(3, minmax(100px, 1fr));
 
   padding: 50px;
 }
@@ -180,6 +178,16 @@ body {
 
 .item-9 {
   grid-area: 3 / 3 / 4 / 4;
+}
+
+.footer {
+  grid-area: 4 / 1 / 5 / 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1rem;
 }
 
 /* Right */
