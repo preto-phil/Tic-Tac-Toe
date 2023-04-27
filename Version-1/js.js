@@ -35,19 +35,20 @@ const gameBoard = (() => {
   
         if (gameRemainder === 1) {
           if (round < 10 && win === false) {
-            if (roundRemainder === 1) {
+            if (roundRemainder === 1 && items[i] === '') {
               div.innerText = 'X';
-      
+              
               items[i] = 'X';
               console.log(items);
       
               toggleTurn();
               winX();
               toggleDraw();
+              toggleGame()
   
               round = round + 1;
       
-            } else {
+            } else if (items[i] === '') {
               div.innerText = 'O';
       
               items[i] = 'O';
@@ -56,6 +57,7 @@ const gameBoard = (() => {
               toggleTurn();
               winO();
               toggleDraw();
+              toggleGame()
   
               round = round + 1;
       
@@ -64,7 +66,7 @@ const gameBoard = (() => {
         }
         if (gameRemainder === 0) {
           if (round < 10 && win === false) {
-            if (roundRemainder === 1) {
+            if (roundRemainder === 1 && items[i] === '') {
 
               div.innerText = 'O';
       
@@ -74,10 +76,11 @@ const gameBoard = (() => {
               toggleTurn();
               winO();
               toggleDraw();
+              toggleGame()
   
               round = round + 1;
 
-            } else {
+            } else if (items[i] === '') {
 
               div.innerText = 'X';
       
@@ -87,6 +90,7 @@ const gameBoard = (() => {
               toggleTurn();
               winX();
               toggleDraw();
+              toggleGame()
   
               round = round + 1;
       
@@ -140,7 +144,6 @@ const gameBoard = (() => {
       console.log("Player X Wins!")
       win = true;
       winner = 'Player X Wins!';
-      game = game + 1;
       toggleWinner();
     };
   }
@@ -182,7 +185,6 @@ const gameBoard = (() => {
       console.log("Player O Wins!");
       win = true;
       winner = 'Player O Wins!';
-      game = game + 1;
       toggleWinner();
     };
   }
@@ -192,7 +194,6 @@ const gameBoard = (() => {
     
     if (win === true) {
       turnDiv.innerHTML = winner;
-      game = game + 1;
     }
   }
 
@@ -229,15 +230,22 @@ const gameBoard = (() => {
       const body = document.getElementById('body');
       while (body.firstChild) body.removeChild(body.firstChild);
       createGameBoard();
+      game = game + 1;
+      toggleGame();
     })
-  }
+  };
   
+  function toggleGame() {
+    let gameDiv = document.getElementById('game');
+    gameDiv.innerText = `Game ${game}`;
+  };
 
   // Return Section
 
   return {
     createGameBoard: createGameBoard,
     resetBoard: resetBoard,
+    toggleGame: toggleGame,
     gameBoardArray: items,
   };
 
@@ -245,6 +253,7 @@ const gameBoard = (() => {
 
 gameBoard.createGameBoard();
 gameBoard.resetBoard();
+gameBoard.toggleGame();
 console.log(gameBoard.gameBoardArray);
 
 
