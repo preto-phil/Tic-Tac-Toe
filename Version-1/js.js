@@ -30,20 +30,6 @@ const gameBoard = (() => {
     }
   }
 
-  // Toggle and Display Turns btw players
-
-  function toggleTurn() {
-    const turnDiv = document.getElementById('turn');
-    const turnText = turnDiv.innerHTML;
-
-    if (turnText === 'Turn: Player O' && win === false) {
-      turnDiv.innerHTML = 'Turn: Player X';
-    }
-    if (turnText === 'Turn: Player X' && win === false) {
-      turnDiv.innerHTML = 'Turn: Player O';
-    }
-  }
-
   // Change game number
 
   function toggleGame() {
@@ -119,6 +105,8 @@ const gameBoard = (() => {
       div.addEventListener('click', () => {
         let roundRemainder = round % 2;
         let gameRemainder = game % 2;
+        const turnDiv = document.getElementById('turn');
+
 
         if (gameRemainder === 1) {
           if (round < 10 && win === false) {
@@ -128,7 +116,7 @@ const gameBoard = (() => {
               items[i] = 'X';
               console.log(items);
 
-              toggleTurn();
+              turnDiv.innerHTML = 'Turn: Player O';
               winX();
               toggleDraw();
               toggleGame();
@@ -141,7 +129,7 @@ const gameBoard = (() => {
               items[i] = 'O';
               console.log(items);
 
-              toggleTurn();
+              turnDiv.innerHTML = 'Turn: Player X';
               winO();
               toggleDraw();
               toggleGame();
@@ -159,7 +147,7 @@ const gameBoard = (() => {
               items[i] = 'O';
               console.log(items);
 
-              toggleTurn();
+              turnDiv.innerHTML = 'Turn: Player X';
               winO();
               toggleDraw();
               toggleGame();
@@ -172,7 +160,7 @@ const gameBoard = (() => {
               items[i] = 'X';
               console.log(items);
 
-              toggleTurn();
+              turnDiv.innerHTML = 'Turn: Player O';
               winX();
               toggleDraw();
               toggleGame();
@@ -200,6 +188,13 @@ const gameBoard = (() => {
       createGameBoard();
       game += 1;
       toggleGame();
+      let gameRemainder = game % 2;
+      const turnDiv = document.getElementById('turn');
+      if (gameRemainder === 1) {
+        turnDiv.innerHTML = 'Turn: Player X';
+      } else {
+        turnDiv.innerHTML = 'Turn: Player O';
+      }
     });
   }
 
