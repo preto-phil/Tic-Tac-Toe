@@ -44,7 +44,9 @@ const gameBoard = (() => {
               toggleTurn();
               winX();
               toggleDraw();
-              toggleGame()
+              toggleGame();
+              addScore();
+
   
               round = round + 1;
       
@@ -57,7 +59,9 @@ const gameBoard = (() => {
               toggleTurn();
               winO();
               toggleDraw();
-              toggleGame()
+              toggleGame();
+              addScore();
+
   
               round = round + 1;
       
@@ -76,7 +80,9 @@ const gameBoard = (() => {
               toggleTurn();
               winO();
               toggleDraw();
-              toggleGame()
+              toggleGame();
+              addScore();
+
   
               round = round + 1;
 
@@ -90,7 +96,9 @@ const gameBoard = (() => {
               toggleTurn();
               winX();
               toggleDraw();
-              toggleGame()
+              toggleGame();
+              addScore();
+
   
               round = round + 1;
       
@@ -143,6 +151,7 @@ const gameBoard = (() => {
     ) {
       console.log("Player X Wins!")
       win = true;
+      xScore = xScore + 1;
       winner = 'Player X Wins!';
       toggleWinner();
     };
@@ -184,6 +193,7 @@ const gameBoard = (() => {
     ) {
       console.log("Player O Wins!");
       win = true;
+      oScore = oScore + 1;
       winner = 'Player O Wins!';
       toggleWinner();
     };
@@ -234,6 +244,18 @@ const gameBoard = (() => {
       toggleGame();
     })
   };
+
+  // Add Score
+
+  let scoreDivX = document.getElementById('p1-score');
+  let scoreDivO = document.getElementById('p2-score');
+  let oScore = 0;
+  let xScore = 0;
+
+  function addScore() {
+    scoreDivX.innerText = xScore;
+    scoreDivO.innerText = oScore;
+  }
   
   function toggleGame() {
     let gameDiv = document.getElementById('game');
@@ -246,6 +268,7 @@ const gameBoard = (() => {
     createGameBoard: createGameBoard,
     resetBoard: resetBoard,
     toggleGame: toggleGame,
+    addScore: addScore,
     gameBoardArray: items,
   };
 
@@ -254,6 +277,5 @@ const gameBoard = (() => {
 gameBoard.createGameBoard();
 gameBoard.resetBoard();
 gameBoard.toggleGame();
+gameBoard.addScore();
 console.log(gameBoard.gameBoardArray);
-
-
