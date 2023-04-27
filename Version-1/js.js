@@ -1,5 +1,4 @@
 const gameBoard = (() => {
-  
   // Array Declaration
 
   let items = ['', '', '', '', '', '', '', '', ''];
@@ -68,37 +67,14 @@ const gameBoard = (() => {
 
   function winX() {
     if (
-      items[0] === 'X' &&
-      items[1] === 'X' &&
-      items[2] === 'X' 
-      ||
-      items[0] === 'X' &&
-      items[4] === 'X' &&
-      items[8] === 'X' 
-      ||
-      items[0] === 'X' &&
-      items[3] === 'X' &&
-      items[6] === 'X' 
-      ||
-      items[2] === 'X' &&
-      items[5] === 'X' &&
-      items[8] === 'X' 
-      ||
-      items[2] === 'X' &&
-      items[4] === 'X' &&
-      items[6] === 'X' 
-      ||
-      items[6] === 'X' &&
-      items[7] === 'X' &&
-      items[8] === 'X' 
-      ||
-      items[3] === 'X' &&
-      items[4] === 'X' &&
-      items[5] === 'X' 
-      ||
-      items[1] === 'X' &&
-      items[4] === 'X' &&
-      items[7] === 'X'
+      (items[0] === 'X' && items[1] === 'X' && items[2] === 'X') ||
+      (items[0] === 'X' && items[4] === 'X' && items[8] === 'X') ||
+      (items[0] === 'X' && items[3] === 'X' && items[6] === 'X') ||
+      (items[2] === 'X' && items[5] === 'X' && items[8] === 'X') ||
+      (items[2] === 'X' && items[4] === 'X' && items[6] === 'X') ||
+      (items[6] === 'X' && items[7] === 'X' && items[8] === 'X') ||
+      (items[3] === 'X' && items[4] === 'X' && items[5] === 'X') ||
+      (items[1] === 'X' && items[4] === 'X' && items[7] === 'X')
     ) {
       win = true;
       xScore += 1;
@@ -109,43 +85,20 @@ const gameBoard = (() => {
 
   function winO() {
     if (
-      items[0] === "O" &&
-      items[1] === "O" &&
-      items[2] === "O" 
-      ||
-      items[0] === "O" &&
-      items[4] === "O" &&
-      items[8] === "O" 
-      ||
-      items[0] === "O" &&
-      items[3] === "O" &&
-      items[6] === "O" 
-      ||
-      items[2] === "O" &&
-      items[5] === "O" &&
-      items[8] === "O" 
-      ||
-      items[2] === "O" &&
-      items[4] === "O" &&
-      items[6] === "O" 
-      ||
-      items[6] === "O" &&
-      items[7] === "O" &&
-      items[8] === "O" 
-      ||
-      items[3] === "O" &&
-      items[4] === "O" &&
-      items[5] === "O" 
-      ||
-      items[1] === "O" &&
-      items[4] === "O" &&
-      items[7] === "O"
+      (items[0] === 'O' && items[1] === 'O' && items[2] === 'O') ||
+      (items[0] === 'O' && items[4] === 'O' && items[8] === 'O') ||
+      (items[0] === 'O' && items[3] === 'O' && items[6] === 'O') ||
+      (items[2] === 'O' && items[5] === 'O' && items[8] === 'O') ||
+      (items[2] === 'O' && items[4] === 'O' && items[6] === 'O') ||
+      (items[6] === 'O' && items[7] === 'O' && items[8] === 'O') ||
+      (items[3] === 'O' && items[4] === 'O' && items[5] === 'O') ||
+      (items[1] === 'O' && items[4] === 'O' && items[7] === 'O')
     ) {
       win = true;
       oScore += 1;
       winner = 'Player O Wins!';
       toggleWinner();
-    };
+    }
   }
 
   // Create Game Board Section
@@ -164,83 +117,71 @@ const gameBoard = (() => {
       div.setAttribute('data-index', i);
       div.textContent = '';
       div.addEventListener('click', () => {
-        
         let roundRemainder = round % 2;
         let gameRemainder = game % 2;
-  
+
         if (gameRemainder === 1) {
           if (round < 10 && win === false) {
             if (roundRemainder === 1 && items[i] === '') {
               div.innerText = 'X';
-              
+
               items[i] = 'X';
               console.log(items);
-      
+
               toggleTurn();
               winX();
               toggleDraw();
               toggleGame();
               addScore();
 
-  
               round += 1;
-      
             } else if (items[i] === '') {
               div.innerText = 'O';
-      
+
               items[i] = 'O';
               console.log(items);
-      
+
               toggleTurn();
               winO();
               toggleDraw();
               toggleGame();
               addScore();
 
-  
               round += 1;
-      
-            }  
+            }
           }
         }
         if (gameRemainder === 0) {
           if (round < 10 && win === false) {
             if (roundRemainder === 1 && items[i] === '') {
-
               div.innerText = 'O';
-      
+
               items[i] = 'O';
               console.log(items);
-      
+
               toggleTurn();
               winO();
               toggleDraw();
               toggleGame();
               addScore();
 
-  
               round += 1;
-
             } else if (items[i] === '') {
-
               div.innerText = 'X';
-      
+
               items[i] = 'X';
               console.log(items);
-      
+
               toggleTurn();
               winX();
               toggleDraw();
               toggleGame();
               addScore();
 
-  
               round += 1;
-      
-            }  
+            }
           }
         }
-
       });
       body.append(div);
     }
