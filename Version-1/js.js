@@ -1,162 +1,112 @@
-
-//// Game board Object
-
 const gameBoard = (() => {
-
+  
   // Array Declaration
 
   let items = ['', '', '', '', '', '', '', '', ''];
+
+  // Block variable declarations
 
   let win = false;
   let winner;
   let round = 1;
   let game = 1;
 
-  // Create Game Board Section
+  // Toggle and Display Winner function
 
-  function createGameBoard() {
-    
-    const body = document.getElementById('body');
+  function toggleWinner() {
+    const turnDiv = document.getElementById('turn');
 
-    for (let i = 0; i < 9; i++) {
-      let number = i + 1;
-      let className = 'item-' + number;
+    if (win === true) {
+      turnDiv.innerHTML = winner;
+    }
+  }
 
-      let div = document.createElement('div');
+  // Display draw
 
-      div.classList.add(className);
-      div.classList.add('grid')
-      div.setAttribute('data-index', i);
-      div.textContent = '';
-      div.addEventListener('click', () => {
-        
-        let roundRemainder = round % 2;
-        let gameRemainder = game % 2;
-  
-        if (gameRemainder === 1) {
-          if (round < 10 && win === false) {
-            if (roundRemainder === 1 && items[i] === '') {
-              div.innerText = 'X';
-              
-              items[i] = 'X';
-              console.log(items);
-      
-              toggleTurn();
-              winX();
-              toggleDraw();
-              toggleGame();
-              addScore();
+  function toggleDraw() {
+    const turnDiv = document.getElementById('turn');
 
-  
-              round = round + 1;
-      
-            } else if (items[i] === '') {
-              div.innerText = 'O';
-      
-              items[i] = 'O';
-              console.log(items);
-      
-              toggleTurn();
-              winO();
-              toggleDraw();
-              toggleGame();
-              addScore();
+    if (round === 9 && win === false) {
+      turnDiv.innerHTML = 'Draw!';
+    }
+  }
 
-  
-              round = round + 1;
-      
-            }  
-          }
-        }
-        if (gameRemainder === 0) {
-          if (round < 10 && win === false) {
-            if (roundRemainder === 1 && items[i] === '') {
+  // Toggle and Display Turns btw players
 
-              div.innerText = 'O';
-      
-              items[i] = 'O';
-              console.log(items);
-      
-              toggleTurn();
-              winO();
-              toggleDraw();
-              toggleGame();
-              addScore();
+  function toggleTurn() {
+    const turnDiv = document.getElementById('turn');
+    const turnText = turnDiv.innerHTML;
 
-  
-              round = round + 1;
+    if (turnText === 'Turn: Player O' && win === false) {
+      turnDiv.innerHTML = 'Turn: Player X';
+    }
+    if (turnText === 'Turn: Player X' && win === false) {
+      turnDiv.innerHTML = 'Turn: Player O';
+    }
+  }
 
-            } else if (items[i] === '') {
+  // Change game number
 
-              div.innerText = 'X';
-      
-              items[i] = 'X';
-              console.log(items);
-      
-              toggleTurn();
-              winX();
-              toggleDraw();
-              toggleGame();
-              addScore();
+  function toggleGame() {
+    const gameDiv = document.getElementById('game');
+    gameDiv.innerText = `Game ${game}`;
+  }
 
-  
-              round = round + 1;
-      
-            }  
-          }
-        }
+  // Add Score
 
-      });
-      body.append(div);
-    };
-  };
+  const scoreDivX = document.getElementById('p1-score');
+  const scoreDivO = document.getElementById('p2-score');
+  let oScore = 0;
+  let xScore = 0;
 
-
+  function addScore() {
+    scoreDivX.innerText = xScore;
+    scoreDivO.innerText = oScore;
+  }
 
   // Winning Conditions
 
   function winX() {
     if (
-      items[0] === "X" &&
-      items[1] === "X" &&
-      items[2] === "X" 
+      items[0] === 'X' &&
+      items[1] === 'X' &&
+      items[2] === 'X' 
       ||
-      items[0] === "X" &&
-      items[4] === "X" &&
-      items[8] === "X" 
+      items[0] === 'X' &&
+      items[4] === 'X' &&
+      items[8] === 'X' 
       ||
-      items[0] === "X" &&
-      items[3] === "X" &&
-      items[6] === "X" 
+      items[0] === 'X' &&
+      items[3] === 'X' &&
+      items[6] === 'X' 
       ||
-      items[2] === "X" &&
-      items[5] === "X" &&
-      items[8] === "X" 
+      items[2] === 'X' &&
+      items[5] === 'X' &&
+      items[8] === 'X' 
       ||
-      items[2] === "X" &&
-      items[4] === "X" &&
-      items[6] === "X" 
+      items[2] === 'X' &&
+      items[4] === 'X' &&
+      items[6] === 'X' 
       ||
-      items[6] === "X" &&
-      items[7] === "X" &&
-      items[8] === "X" 
+      items[6] === 'X' &&
+      items[7] === 'X' &&
+      items[8] === 'X' 
       ||
-      items[3] === "X" &&
-      items[4] === "X" &&
-      items[5] === "X" 
+      items[3] === 'X' &&
+      items[4] === 'X' &&
+      items[5] === 'X' 
       ||
-      items[1] === "X" &&
-      items[4] === "X" &&
-      items[7] === "X"
+      items[1] === 'X' &&
+      items[4] === 'X' &&
+      items[7] === 'X'
     ) {
-      console.log("Player X Wins!")
       win = true;
-      xScore = xScore + 1;
+      xScore += 1;
       winner = 'Player X Wins!';
       toggleWinner();
-    };
+    }
   }
-  
+
   function winO() {
     if (
       items[0] === "O" &&
@@ -191,45 +141,112 @@ const gameBoard = (() => {
       items[4] === "O" &&
       items[7] === "O"
     ) {
-      console.log("Player O Wins!");
       win = true;
-      oScore = oScore + 1;
+      oScore += 1;
       winner = 'Player O Wins!';
       toggleWinner();
     };
   }
 
-  function toggleWinner() {
-    const turnDiv = document.getElementById('turn');
-    
-    if (win === true) {
-      turnDiv.innerHTML = winner;
+  // Create Game Board Section
+
+  function createGameBoard() {
+    const body = document.getElementById('body');
+
+    for (let i = 0; i < 9; i++) {
+      const number = i + 1;
+      const className = `item-${number}`;
+
+      const div = document.createElement('div');
+
+      div.classList.add(className);
+      div.classList.add('grid');
+      div.setAttribute('data-index', i);
+      div.textContent = '';
+      div.addEventListener('click', () => {
+        
+        let roundRemainder = round % 2;
+        let gameRemainder = game % 2;
+  
+        if (gameRemainder === 1) {
+          if (round < 10 && win === false) {
+            if (roundRemainder === 1 && items[i] === '') {
+              div.innerText = 'X';
+              
+              items[i] = 'X';
+              console.log(items);
+      
+              toggleTurn();
+              winX();
+              toggleDraw();
+              toggleGame();
+              addScore();
+
+  
+              round += 1;
+      
+            } else if (items[i] === '') {
+              div.innerText = 'O';
+      
+              items[i] = 'O';
+              console.log(items);
+      
+              toggleTurn();
+              winO();
+              toggleDraw();
+              toggleGame();
+              addScore();
+
+  
+              round += 1;
+      
+            }  
+          }
+        }
+        if (gameRemainder === 0) {
+          if (round < 10 && win === false) {
+            if (roundRemainder === 1 && items[i] === '') {
+
+              div.innerText = 'O';
+      
+              items[i] = 'O';
+              console.log(items);
+      
+              toggleTurn();
+              winO();
+              toggleDraw();
+              toggleGame();
+              addScore();
+
+  
+              round += 1;
+
+            } else if (items[i] === '') {
+
+              div.innerText = 'X';
+      
+              items[i] = 'X';
+              console.log(items);
+      
+              toggleTurn();
+              winX();
+              toggleDraw();
+              toggleGame();
+              addScore();
+
+  
+              round += 1;
+      
+            }  
+          }
+        }
+
+      });
+      body.append(div);
     }
   }
 
-  function toggleDraw() {
-    const turnDiv = document.getElementById('turn');
-
-    if (round === 9 && win === false) {
-      turnDiv.innerHTML = "Draw!";
-    }
-  }
-
-
-  // Toggle Turn Section
-
-  function toggleTurn() {
-    const turnDiv = document.getElementById('turn');
-    let turnText = turnDiv.innerHTML;
-
-    if ( turnText === 'Turn: Player O' && win === false ) {
-      turnDiv.innerHTML = 'Turn: Player X';
-    }
-    if (turnText === 'Turn: Player X' & win === false ) {
-      turnDiv.innerHTML = 'Turn: Player O';
-    }
-  };
-
+  // Function to clear board
 
   function resetBoard() {
     const resetButton = document.getElementById('gridButton');
@@ -240,42 +257,24 @@ const gameBoard = (() => {
       const body = document.getElementById('body');
       while (body.firstChild) body.removeChild(body.firstChild);
       createGameBoard();
-      game = game + 1;
+      game += 1;
       toggleGame();
-    })
-  };
-
-  // Add Score
-
-  let scoreDivX = document.getElementById('p1-score');
-  let scoreDivO = document.getElementById('p2-score');
-  let oScore = 0;
-  let xScore = 0;
-
-  function addScore() {
-    scoreDivX.innerText = xScore;
-    scoreDivO.innerText = oScore;
+    });
   }
-  
-  function toggleGame() {
-    let gameDiv = document.getElementById('game');
-    gameDiv.innerText = `Game ${game}`;
-  };
 
   // Return Section
 
   return {
-    createGameBoard: createGameBoard,
-    resetBoard: resetBoard,
-    toggleGame: toggleGame,
-    addScore: addScore,
-    gameBoardArray: items,
+    createGameBoard,
+    resetBoard,
+    toggleGame,
+    addScore,
   };
-
 })();
+
+// Call Functions
 
 gameBoard.createGameBoard();
 gameBoard.resetBoard();
 gameBoard.toggleGame();
 gameBoard.addScore();
-console.log(gameBoard.gameBoardArray);
