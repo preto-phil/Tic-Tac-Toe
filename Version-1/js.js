@@ -220,29 +220,31 @@ const gameBoard = (() => {
   };
 
 
-/*   function resetBoard() {
+  function resetBoard() {
     const resetButton = document.getElementById('gridButton');
     resetButton.addEventListener('click', () => {
       round = 1;
       items = ['', '', '', '', '', '', '', '', ''];
       win = false;
+      const body = document.getElementById('body');
+      while (body.firstChild) body.removeChild(body.firstChild);
       createGameBoard();
     })
-  } */
+  }
   
 
   // Return Section
 
   return {
     createGameBoard: createGameBoard,
-/*     resetBoard: resetBoard,
- */    gameBoardArray: items,
+    resetBoard: resetBoard,
+    gameBoardArray: items,
   };
 
 })();
 
 gameBoard.createGameBoard();
-/* gameBoard.resetBoard();
- */console.log(gameBoard.gameBoardArray);
+gameBoard.resetBoard();
+console.log(gameBoard.gameBoardArray);
 
 
