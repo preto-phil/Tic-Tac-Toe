@@ -10,31 +10,32 @@
 </head>
 <body>
 
-  <div class="left-section">
-
-    <div id="game"></div>
-
-    <div id="resetBtn"><button id="gridButton" style="display: none;">Reset</button></div>
-
-  </div>
-
-  <div class="middle-section">
-    
+  <div id="start-page">
     <div class="header">Tic Tac Toe</div>
-    <div id="turn">Turn: Player X</div>  
-    <div id="body"></div>
-    <div class="footer">Made by preto-phil</div>
-
+    <div class="player-input"><input type="text" name="p1-name" id="p1-name" placeholder="Player 1 Name"></input></div>
+    <div class="player-input"><input type="text" name="p2-name" id="p2-name" placeholder="Player 2 Name"></input></div>
+    <div><button>Start Game</button></div>
   </div>
 
-  <div class="right-section">
-
-    <div class="player p1">Player X</div>
-    <div id="p1-score"></div>
-    <div class="versus">vs</div>
-    <div class="player p2">Player O</div>
-    <div id="p2-score"></div>
-
+  <div id="game-page" style="display: none;">
+    <div class="left-section">
+      <div id="game"></div>
+      <div id="resetBtn"><button id="gridButton" style="display: none;">Reset</button></div>
+    </div>
+    <div class="middle-section">
+    
+      <div class="header">Tic Tac Toe</div>
+      <div id="turn">Turn: Player X</div>
+      <div id="body"></div>
+      <div class="footer">Made by preto-phil</div>
+    </div>
+    <div class="right-section">
+      <div class="player p1">Player X</div>
+      <div id="p1-score"></div>
+      <div class="versus">vs</div>
+      <div class="player p2">Player O</div>
+      <div id="p2-score"></div>
+    </div>
   </div>
 
   <script src="js.js"></script>
