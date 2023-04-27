@@ -34,6 +34,21 @@ body {
   flex-direction: column;
 }
 
+#gridButton {
+  padding: 30px;
+  font-size: 3rem;
+  font-weight: 700;
+  cursor: pointer;
+
+  background-color: rgb(20, 20, 20);
+  color: whitesmoke;
+  border: none;
+}
+
+#gridButton:hover {
+  font-size: 3.1rem;
+
+}
 
 
 
@@ -172,11 +187,13 @@ body {
   align-items: center;
   flex-direction: column;
 
+  font-size: 2rem;
 }
 
-#gridButton {
-  padding: 10px;
-  font-size: 2rem;
-  font-weight: 700;
-  cursor: pointer;
+.player {
+  padding-bottom: 20px;
+}
+
+.versus {
+  padding: 40px;
 }
