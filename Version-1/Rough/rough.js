@@ -388,11 +388,6 @@ if (
   }; */  
 
 
-
-
-
-
-
 // Factory Function to create player info
 const player = (name, sign) => {
   

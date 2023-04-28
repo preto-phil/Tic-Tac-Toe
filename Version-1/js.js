@@ -1,3 +1,26 @@
+// Toggle Page appear / disappear
+
+const start = (() => {
+  function startGame() {
+    let startBtn = document.getElementById('start-btn');
+    let startPage = document.getElementById('start-page');
+    let gamePage = document.getElementById('game-page');
+    startBtn.addEventListener('click', () => {
+        startPage.style.display = 'none';
+        gamePage.style.display = 'grid';
+    })
+  }
+
+  return {
+    startGame
+  }
+
+})() 
+
+start.startGame();
+
+// Game board creation and game Module Patter
+
 const gameBoard = (() => {
   // Array Declaration
 
@@ -14,7 +37,7 @@ const gameBoard = (() => {
 
   // Toggle reset button to appear
 
-  function toggleFunction() {
+  function _toggleFunction() {
     const targetDiv = document.getElementById('gridButton');
     if (win === true || draw === true) {
       targetDiv.style.display = 'block';
@@ -25,7 +48,7 @@ const gameBoard = (() => {
 
   // Toggle and Display Winner function
 
-  function toggleWinner() {
+  function _toggleWinner() {
     const turnDiv = document.getElementById('turn');
 
     if (win === true) {
@@ -35,13 +58,13 @@ const gameBoard = (() => {
 
   // Display draw
 
-  function toggleDraw() {
+  function _toggleDraw() {
     const turnDiv = document.getElementById('turn');
     
     if (round === 9 && win === false) {
       turnDiv.innerHTML = 'Draw!';
       draw = true;
-      toggleFunction();
+      _toggleFunction();
     }
   }
 
@@ -67,7 +90,7 @@ const gameBoard = (() => {
 
   // Winning Conditions
 
-  function winX() {
+  function _winX() {
     if (
       (items[0] === 'X' && items[1] === 'X' && items[2] === 'X') ||
       (items[0] === 'X' && items[4] === 'X' && items[8] === 'X') ||
@@ -81,12 +104,12 @@ const gameBoard = (() => {
       win = true;
       xScore += 1;
       winner = 'Player X Wins!';
-      toggleWinner();
-      toggleFunction();
+      _toggleWinner();
+      _toggleFunction();
     }
   }
 
-  function winO() {
+  function _winO() {
     if (
       (items[0] === 'O' && items[1] === 'O' && items[2] === 'O') ||
       (items[0] === 'O' && items[4] === 'O' && items[8] === 'O') ||
@@ -100,8 +123,8 @@ const gameBoard = (() => {
       win = true;
       oScore += 1;
       winner = 'Player O Wins!';
-      toggleWinner();
-      toggleFunction();
+      _toggleWinner();
+      _toggleFunction();
     }
   }
 
@@ -135,8 +158,8 @@ const gameBoard = (() => {
               console.log(items);
 
               turnDiv.innerHTML = 'Turn: Player O';
-              winX();
-              toggleDraw();
+              _winX();
+              _toggleDraw();
               toggleGame();
               addScore();
 
@@ -148,8 +171,8 @@ const gameBoard = (() => {
               console.log(items);
 
               turnDiv.innerHTML = 'Turn: Player X';
-              winO();
-              toggleDraw();
+              _winO();
+              _toggleDraw();
               toggleGame();
               addScore();
 
@@ -166,8 +189,8 @@ const gameBoard = (() => {
               console.log(items);
 
               turnDiv.innerHTML = 'Turn: Player X';
-              winO();
-              toggleDraw();
+              _winO();
+              _toggleDraw();
               toggleGame();
               addScore();
 
@@ -179,8 +202,8 @@ const gameBoard = (() => {
               console.log(items);
 
               turnDiv.innerHTML = 'Turn: Player O';
-              winX();
-              toggleDraw();
+              _winX();
+              _toggleDraw();
               toggleGame();
               addScore();
 
@@ -238,12 +261,21 @@ gameBoard.toggleGame();
 gameBoard.addScore();
 
 
-// Toggle Page appear / disappear
+// Factory Function to create player info
+const player = (name, sign) => {
+  
+  const getName = () => name;
+  const getSign = () => sign;
 
-let startBtn = document.getElementById('start-btn');
-let startPage = document.getElementById('start-page');
-let gamePage = document.getElementById('game-page');
-startBtn.addEventListener('click', () => {
-    startPage.style.display = 'none';
-    gamePage.style.display = 'grid';
-})
+  return {
+    getName,
+    getSign
+  };
+
+};
+
+const player1 = player('P1', 'X'); // change that player inputs it in Phase 1
+const player2 = player('P2', 'O'); // change that player inputs it in Phase 1
+
+//// Experimental Area
+
