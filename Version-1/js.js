@@ -8,7 +8,7 @@ const start = (() => {
     startBtn.addEventListener('click', () => {
         startPage.style.display = 'none';
         gamePage.style.display = 'grid';
-    })
+    });
   }
 
   return {
@@ -18,6 +18,8 @@ const start = (() => {
 })() 
 
 start.startGame();
+
+
 
 // Game board creation and game Module Patter
 
@@ -33,7 +35,10 @@ const gameBoard = (() => {
   let winner;
   let round = 1;
   let game = 1;
+  
 
+  let xName = document.getElementById('p1-name').value;
+  let oName = document.getElementById('p2-name').value;
 
   // Toggle reset button to appear
 
@@ -103,7 +108,7 @@ const gameBoard = (() => {
     ) {
       win = true;
       xScore += 1;
-      winner = 'Player X Wins!';
+      winner = `${xName} Wins!`;
       _toggleWinner();
       _toggleFunction();
     }
@@ -122,7 +127,7 @@ const gameBoard = (() => {
     ) {
       win = true;
       oScore += 1;
-      winner = 'Player O Wins!';
+      winner = `${oName} Wins!`;
       _toggleWinner();
       _toggleFunction();
     }
@@ -133,6 +138,15 @@ const gameBoard = (() => {
   function createGameBoard() {
     const body = document.getElementById('body');
 
+    //  Display first turn       
+
+    if (game === 1 && round === 1) {
+      const turnDiv = document.getElementById('turn');
+      console.log(xName);
+      turnDiv.innerHTML = `Turn: ${xName}`;
+      console.log(turnDiv.innerHTML);
+    }
+    
     for (let i = 0; i < 9; i++) {
       const number = i + 1;
       const className = `item-${number}`;
@@ -147,7 +161,8 @@ const gameBoard = (() => {
         let roundRemainder = round % 2;
         let gameRemainder = game % 2;
         const turnDiv = document.getElementById('turn');
-
+        let xName = document.getElementById('p1-name').value;
+        let oName = document.getElementById('p2-name').value;
 
         if (gameRemainder === 1) {
           if (round < 10 && win === false) {
@@ -157,7 +172,7 @@ const gameBoard = (() => {
               items[i] = 'X';
               console.log(items);
 
-              turnDiv.innerHTML = 'Turn: Player O';
+              turnDiv.innerHTML = `Turn: ${oName}`;
               _winX();
               _toggleDraw();
               toggleGame();
@@ -170,7 +185,7 @@ const gameBoard = (() => {
               items[i] = 'O';
               console.log(items);
 
-              turnDiv.innerHTML = 'Turn: Player X';
+              turnDiv.innerHTML = `Turn: ${xName}`;
               _winO();
               _toggleDraw();
               toggleGame();
@@ -188,7 +203,7 @@ const gameBoard = (() => {
               items[i] = 'O';
               console.log(items);
 
-              turnDiv.innerHTML = 'Turn: Player X';
+              turnDiv.innerHTML = `Turn: ${xName}`;
               _winO();
               _toggleDraw();
               toggleGame();
@@ -201,7 +216,7 @@ const gameBoard = (() => {
               items[i] = 'X';
               console.log(items);
 
-              turnDiv.innerHTML = 'Turn: Player O';
+              turnDiv.innerHTML = `Turn: ${oName}`;
               _winX();
               _toggleDraw();
               toggleGame();
@@ -234,9 +249,9 @@ const gameBoard = (() => {
         let gameRemainder = game % 2;
         const turnDiv = document.getElementById('turn');
         if (gameRemainder === 1) {
-          turnDiv.innerHTML = 'Turn: Player X';
+          turnDiv.innerHTML =  `Turn: ${xName}`;
         } else {
-          turnDiv.innerHTML = 'Turn: Player O';
+          turnDiv.innerHTML = `Turn: ${oName}`;
         }
         resetButton.style.display = 'none';
       }
@@ -249,33 +264,18 @@ const gameBoard = (() => {
     createGameBoard,
     resetBoard,
     toggleGame,
-    addScore,
+    addScore
   };
 })();
 
 // Call Functions
 
-gameBoard.createGameBoard();
-gameBoard.resetBoard();
-gameBoard.toggleGame();
-gameBoard.addScore();
-
-
-// Factory Function to create player info
-const player = (name, sign) => {
-  
-  const getName = () => name;
-  const getSign = () => sign;
-
-  return {
-    getName,
-    getSign
-  };
-
-};
-
-const player1 = player('P1', 'X'); // change that player inputs it in Phase 1
-const player2 = player('P2', 'O'); // change that player inputs it in Phase 1
+let startBtn = document.getElementById('start-btn');
+startBtn.addEventListener('click', () => {
+  gameBoard.createGameBoard();
+  gameBoard.resetBoard();
+  gameBoard.toggleGame();
+  gameBoard.addScore();
+});
 
 //// Experimental Area
-
