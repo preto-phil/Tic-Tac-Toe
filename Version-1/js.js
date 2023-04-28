@@ -283,3 +283,36 @@ startBtn.addEventListener('click', () => {
 });
 
 //// Experimental Area
+
+/* let input = localStorage.getItem('input')
+
+function returnText() {
+  input = document.getElementById("userInput").value
+  localStorage.setItem('input', input)
+  alert(input)
+}
+
+console.log(input)
+
+
+let xName = document.getElementById('p1-name').value;
+
+console.log(xName);
+let oNameElement = document.getElementById('p2-name').value;
+
+let xNameElement = document.getElementById('p1-name');
+
+console.log(xName);
+let oName = document.getElementById('p2-name'); */
+
+//  Display first turn   
+
+
+/* 
+let startButton = document.getElementById('start-btn');
+startBtn.addEventListener('click', () => {
+  let firstTurn = document.getElementById('turn');
+  firstTurn.innerText = 'Turn: ' + xName;
+  console.log(firstTurn);
+}); */
+
