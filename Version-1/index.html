@@ -12,15 +12,26 @@
 
   <div id="start-page">
     <div class="header">Tic Tac Toe</div>
-    <div class="player-input"><input type="text" name="p1-name" id="p1-name" placeholder="Player 1 Name"></input></div>
-    <div class="player-input"><input type="text" name="p2-name" id="p2-name" placeholder="Player 2 Name"></input></div>
-    <div><button>Start Game</button></div>
+    <div class="p-input1">
+      <label for="p1-name">Insert Player X's Name</label>
+      <input type="text" name="p1-name" id="p1-name" placeholder="Player X..."></input>
+    </div>
+    <div class="p-input2">
+      <label for="p2-name">Insert Player O's Name</label>
+      <input type="text" name="p2-name" id="p2-name" placeholder="Player O..."></input>
+    </div>
+    <div class="start-btn">
+      <button id="start-btn">Start Game</button>
+    </div>
+    <div class="start-footer">Made by preto-phil</div>
   </div>
 
   <div id="game-page" style="display: none;">
     <div class="left-section">
       <div id="game"></div>
-      <div id="resetBtn"><button id="gridButton" style="display: none;">Reset</button></div>
+      <div id="resetBtn">
+        <button id="gridButton" style="display: none;">Reset</button>
+      </div>
     </div>
     <div class="middle-section">
     
