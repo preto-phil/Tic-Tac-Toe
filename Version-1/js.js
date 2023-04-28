@@ -38,11 +38,24 @@ const gameBoard = (() => {
   
 
   let xName = document.getElementById('p1-name').value;
+
+  console.log(xName);
   let oName = document.getElementById('p2-name').value;
+
+  //  Display first turn   
+  
+
+
+  let startBtn = document.getElementById('start-btn');
+  startBtn.addEventListener('click', () => {
+    let firstTurn = document.getElementById('turn');
+    firstTurn.innerText = 'Turn: ' + xName;
+    console.log(firstTurn);
+  });
 
   // Toggle reset button to appear
 
-  function _toggleFunction() {
+  function _toggleReset() {
     const targetDiv = document.getElementById('gridButton');
     if (win === true || draw === true) {
       targetDiv.style.display = 'block';
@@ -69,7 +82,7 @@ const gameBoard = (() => {
     if (round === 9 && win === false) {
       turnDiv.innerHTML = 'Draw!';
       draw = true;
-      _toggleFunction();
+      _toggleReset();
     }
   }
 
@@ -110,7 +123,7 @@ const gameBoard = (() => {
       xScore += 1;
       winner = `${xName} Wins!`;
       _toggleWinner();
-      _toggleFunction();
+      _toggleReset();
     }
   }
 
@@ -129,23 +142,14 @@ const gameBoard = (() => {
       oScore += 1;
       winner = `${oName} Wins!`;
       _toggleWinner();
-      _toggleFunction();
+      _toggleReset();
     }
   }
 
   // Create Game Board Section
 
   function createGameBoard() {
-    const body = document.getElementById('body');
-
-    //  Display first turn       
-
-    if (game === 1 && round === 1) {
-      const turnDiv = document.getElementById('turn');
-      console.log(xName);
-      turnDiv.innerHTML = `Turn: ${xName}`;
-      console.log(turnDiv.innerHTML);
-    }
+    const body = document.getElementById('body');    
     
     for (let i = 0; i < 9; i++) {
       const number = i + 1;
