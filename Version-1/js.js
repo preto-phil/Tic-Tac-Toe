@@ -238,4 +238,12 @@ gameBoard.toggleGame();
 gameBoard.addScore();
 
 
-// Toggle Reset
+// Toggle Page appear / disappear
+
+let startBtn = document.getElementById('start-btn');
+let startPage = document.getElementById('start-page');
+let gamePage = document.getElementById('game-page');
+startBtn.addEventListener('click', () => {
+    startPage.style.display = 'none';
+    gamePage.style.display = 'grid';
+})
