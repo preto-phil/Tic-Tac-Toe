@@ -1,3 +1,26 @@
+
+//  Display first turn 
+
+const firstTurn = (() => {
+  
+  function firstXTurn() {
+    let startButton = document.getElementById('start-btn');
+    startButton.addEventListener('click', () => {
+      let turnDiv = document.getElementById('turn');
+      let xName = document.getElementById('p1-name').value;
+      let variable = 'Turn: ' + xName;
+      turnDiv.innerText = variable;
+    });
+  }
+
+  return {
+      firstXTurn
+  }
+  
+})()
+
+firstTurn.firstXTurn();
+
 // Toggle Page appear / disappear
 
 const start = (() => {
@@ -38,20 +61,9 @@ const gameBoard = (() => {
   
 
   let xName = document.getElementById('p1-name').value;
-
-  console.log(xName);
+  let xVar = 'Turn: ' + xName;
   let oName = document.getElementById('p2-name').value;
-
-  //  Display first turn   
-  
-
-
-  let startBtn = document.getElementById('start-btn');
-  startBtn.addEventListener('click', () => {
-    let firstTurn = document.getElementById('turn');
-    firstTurn.innerText = 'Turn: ' + xName;
-    console.log(firstTurn);
-  });
+  let oVar = 'Turn: '+ oName  
 
   // Toggle reset button to appear
 
@@ -250,12 +262,20 @@ const gameBoard = (() => {
         createGameBoard();
         game += 1;
         toggleGame();
+
         let gameRemainder = game % 2;
         const turnDiv = document.getElementById('turn');
+
         if (gameRemainder === 1) {
-          turnDiv.innerHTML =  `Turn: ${xName}`;
+          let turnDiv = document.getElementById('turn');
+          let xName = document.getElementById('p1-name').value;
+          let variable = 'Turn: ' + xName;
+          turnDiv.innerText = variable;
         } else {
-          turnDiv.innerHTML = `Turn: ${oName}`;
+          let turnDiv = document.getElementById('turn');
+          let oName = document.getElementById('p2-name').value;
+          let variable = 'Turn: ' + oName;
+          turnDiv.innerText = variable;
         }
         resetButton.style.display = 'none';
       }
@@ -281,38 +301,3 @@ startBtn.addEventListener('click', () => {
   gameBoard.toggleGame();
   gameBoard.addScore();
 });
-
-//// Experimental Area
-
-/* let input = localStorage.getItem('input')
-
-function returnText() {
-  input = document.getElementById("userInput").value
-  localStorage.setItem('input', input)
-  alert(input)
-}
-
-console.log(input)
-
-
-let xName = document.getElementById('p1-name').value;
-
-console.log(xName);
-let oNameElement = document.getElementById('p2-name').value;
-
-let xNameElement = document.getElementById('p1-name');
-
-console.log(xName);
-let oName = document.getElementById('p2-name'); */
-
-//  Display first turn   
-
-
-/* 
-let startButton = document.getElementById('start-btn');
-startBtn.addEventListener('click', () => {
-  let firstTurn = document.getElementById('turn');
-  firstTurn.innerText = 'Turn: ' + xName;
-  console.log(firstTurn);
-}); */
-
