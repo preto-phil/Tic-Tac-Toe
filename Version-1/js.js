@@ -16,7 +16,7 @@ const firstTurn = (() => {
   return {
       firstXTurn
   }
-  
+
 })()
 
 firstTurn.firstXTurn();
@@ -28,10 +28,25 @@ const start = (() => {
     let startBtn = document.getElementById('start-btn');
     let startPage = document.getElementById('start-page');
     let gamePage = document.getElementById('game-page');
+    _toggleNames();
     startBtn.addEventListener('click', () => {
         startPage.style.display = 'none';
         gamePage.style.display = 'grid';
     });
+  }
+
+  function _toggleNames() {
+    let startBtn = document.getElementById('start-btn');
+    startBtn.addEventListener('click', () => {
+      let xName = document.getElementById('p1-name').value;
+      console.log(xName)
+      let player1Name = document.getElementById('p1');
+      let oName = document.getElementById('p2-name').value;
+      console.log(oName)
+      let player2Name = document.getElementById('p2');
+      player1Name.innerText = xName;
+      player2Name.innerText = oName;
+  });
   }
 
   return {
@@ -58,12 +73,6 @@ const gameBoard = (() => {
   let winner;
   let round = 1;
   let game = 1;
-  
-
-  let xName = document.getElementById('p1-name').value;
-  let xVar = 'Turn: ' + xName;
-  let oName = document.getElementById('p2-name').value;
-  let oVar = 'Turn: '+ oName  
 
   // Toggle reset button to appear
 
@@ -133,7 +142,9 @@ const gameBoard = (() => {
     ) {
       win = true;
       xScore += 1;
-      winner = `${xName} Wins!`;
+
+      let xName = document.getElementById('p1-name').value;
+      winner = xName + ' Wins!';
       _toggleWinner();
       _toggleReset();
     }
@@ -152,7 +163,9 @@ const gameBoard = (() => {
     ) {
       win = true;
       oScore += 1;
-      winner = `${oName} Wins!`;
+      let oName = document.getElementById('p2-name').value;
+
+      winner = oName + ' Wins!';
       _toggleWinner();
       _toggleReset();
     }
