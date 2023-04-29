@@ -164,61 +164,7 @@ const gameBoard = (() => {
     }
   }
 
-/*   // Get CPU Move
 
-  function _getCPUMove() {
-
-    let cpuMove = Math.floor(Math.random() * 9) + 1;
-  
-    while ((cpuMove == 1 && (items[0] != ''))
-      || (cpuMove == 2 && (items[0] != ''))
-      || (cpuMove == 3 && (items[0] != ''))
-      || (cpuMove == 4 && (items[0] != ''))
-      || (cpuMove == 5 && (items[0] != ''))
-      || (cpuMove == 6 && (items[0] != ''))
-      || (cpuMove == 7 && (items[0] != ''))
-      || (cpuMove == 8 && (items[0] != ''))
-      || (cpuMove == 9 && (items[0] != ''))) {
-      cpuMove = Math.floor(Math.random() * 9) + 1;
-    }
-    
-    if (cpuMove === 1) {
-      div.innerText = 'O';
-      items[i] = 'O';
-    }
-    if (cpuMove === 2) {
-      div.innerText = 'O';
-      items[i] = 'O';
-    }
-    if (cpuMove === 3) {
-      div.innerText = 'O';
-      items[i] = 'O';
-    }
-    if (cpuMove === 4) {
-      div.innerText = 'O';
-      items[i] = 'O';
-    }
-    if (cpuMove === 5) {
-      div.innerText = 'O';
-      items[i] = 'O';
-    }
-    if (cpuMove === 6) {
-      div.innerText = 'O';
-      items[i] = 'O';
-    }
-    if (cpuMove === 7) {
-      div.innerText = 'O';
-      items[i] = 'O';
-    }
-    if (cpuMove === 8) {
-      div.innerText = 'O';
-      items[i] = 'O';
-    }
-    if (cpuMove === 9) {
-      div.innerText = 'O';
-      items[i] = 'O';
-    }             
-  } */
 
 
   // Create Game Board Section
@@ -251,13 +197,66 @@ const gameBoard = (() => {
               items[i] = 'X';
               console.log(items);
 
+              // Get CPU Move
+
+              let cpuMove = Math.floor(Math.random() * 9) + 1;
+            
+              while ((cpuMove == 1 && (items[0] != ''))
+                || (cpuMove == 2 && (items[0] != ''))
+                || (cpuMove == 3 && (items[0] != ''))
+                || (cpuMove == 4 && (items[0] != ''))
+                || (cpuMove == 5 && (items[0] != ''))
+                || (cpuMove == 6 && (items[0] != ''))
+                || (cpuMove == 7 && (items[0] != ''))
+                || (cpuMove == 8 && (items[0] != ''))
+                || (cpuMove == 9 && (items[0] != ''))) {
+                cpuMove = Math.floor(Math.random() * 9) + 1;
+              }
+              
+              if (cpuMove === 1) {
+                div.innerText = 'O';
+                items[i] = 'O';
+              }
+              if (cpuMove === 2) {
+                div.innerText = 'O';
+                items[i] = 'O';
+              }
+              if (cpuMove === 3) {
+                div.innerText = 'O';
+                items[i] = 'O';
+              }
+              if (cpuMove === 4) {
+                div.innerText = 'O';
+                items[i] = 'O';
+              }
+              if (cpuMove === 5) {
+                div.innerText = 'O';
+                items[i] = 'O';
+              }
+              if (cpuMove === 6) {
+                div.innerText = 'O';
+                items[i] = 'O';
+              }
+              if (cpuMove === 7) {
+                div.innerText = 'O';
+                items[i] = 'O';
+              }
+              if (cpuMove === 8) {
+                div.innerText = 'O';
+                items[i] = 'O';
+              }
+              if (cpuMove === 9) {
+                div.innerText = 'O';
+                items[i] = 'O';
+              }            
+
               turnDiv.innerHTML = `Turn: ${oName}`;
               _winX();
               _toggleDraw();
               toggleGame();
               addScore();
               
-              /* _getCPUMove(); */
+              
 
               round += 1;
             } else if (items[i] === '') {
