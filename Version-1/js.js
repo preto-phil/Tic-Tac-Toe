@@ -1,8 +1,6 @@
-
-//  Display first turn 
+//  Display first turn
 
 const firstTurn = (() => {
-  
   function firstXTurn() {
     let startButton = document.getElementById('start-btn');
     startButton.addEventListener('click', () => {
@@ -14,10 +12,9 @@ const firstTurn = (() => {
   }
 
   return {
-      firstXTurn
-  }
-
-})()
+    firstXTurn,
+  };
+})();
 
 firstTurn.firstXTurn();
 
@@ -30,8 +27,8 @@ const start = (() => {
     let gamePage = document.getElementById('game-page');
     _toggleNames();
     startBtn.addEventListener('click', () => {
-        startPage.style.display = 'none';
-        gamePage.style.display = 'grid';
+      startPage.style.display = 'none';
+      gamePage.style.display = 'grid';
     });
   }
 
@@ -39,25 +36,22 @@ const start = (() => {
     let startBtn = document.getElementById('start-btn');
     startBtn.addEventListener('click', () => {
       let xName = document.getElementById('p1-name').value;
-      console.log(xName)
+      console.log(xName);
       let player1Name = document.getElementById('p1');
       let oName = document.getElementById('p2-name').value;
-      console.log(oName)
+      console.log(oName);
       let player2Name = document.getElementById('p2');
       player1Name.innerText = xName;
       player2Name.innerText = oName;
-  });
+    });
   }
 
   return {
-    startGame
-  }
-
-})() 
+    startGame,
+  };
+})();
 
 start.startGame();
-
-
 
 // Game board creation and game Module Patter
 
@@ -99,7 +93,7 @@ const gameBoard = (() => {
 
   function _toggleDraw() {
     const turnDiv = document.getElementById('turn');
-    
+
     if (round === 9 && win === false) {
       turnDiv.innerHTML = 'Draw!';
       draw = true;
@@ -125,7 +119,6 @@ const gameBoard = (() => {
     scoreDivX.innerText = xScore;
     scoreDivO.innerText = oScore;
   }
-
 
   // Winning Conditions
 
@@ -174,8 +167,8 @@ const gameBoard = (() => {
   // Create Game Board Section
 
   function createGameBoard() {
-    const body = document.getElementById('body');    
-    
+    const body = document.getElementById('body');
+
     for (let i = 0; i < 9; i++) {
       const number = i + 1;
       const className = `item-${number}`;
@@ -301,7 +294,7 @@ const gameBoard = (() => {
     createGameBoard,
     resetBoard,
     toggleGame,
-    addScore
+    addScore,
   };
 })();
 
