@@ -255,7 +255,10 @@ const gameBoard = (() => {
       div.setAttribute('id', i);
       div.textContent = '';
       div.addEventListener('click', () => {
-
+        let gameRemainder = game % 2;
+        if (gameRemainder === 1) {
+          
+        }
         if (round < 10 && win === false) {
           if (items[i] === '') {
             div.innerText = 'X';

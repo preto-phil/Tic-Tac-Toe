@@ -17,6 +17,61 @@ body {
 }
 
 
+/* Choice page */
+#choice-page {
+  height: 100vh;
+  
+  display: grid;
+  grid-template-rows: 1fr 1fr 6fr 0.2fr;
+}
+
+.decision {
+  grid-area: 2 / 1 / 3 / 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 2rem;
+}
+
+.choice-buttons {
+  grid-area: 3 / 1 / 4 / 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: start;
+
+  margin-top: 20px;
+}
+
+#two-player-btn {
+  padding: 30px;
+  font-size: 2rem;
+  cursor: pointer;
+  
+  background-color: whitesmoke;
+  color: rgb(20, 20, 20);
+  border: none;
+  border-radius: 5px;
+
+  margin-right: 40px;
+}
+
+.choice-start-btn {
+  margin-left: 40px;
+}
+
+.choice-footer {
+  grid-area: 4 / 1 / 5 / 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1rem;
+}
+
 /* First Page */
 
 #start-page {
