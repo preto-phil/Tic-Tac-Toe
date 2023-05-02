@@ -17,64 +17,6 @@ body {
 }
 
 
-/* Choice page */
-#choice-page {
-  height: 100vh;
-  
-  display: grid;
-  grid-template-rows: 1fr 1fr 6fr 0.2fr;
-}
-
-.decision {
-  grid-area: 2 / 1 / 3 / 2;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 2rem;
-}
-
-.choice-buttons {
-  grid-area: 3 / 1 / 4 / 2;
-
-  display: flex;
-  justify-content: center;
-  align-items: start;
-
-  margin-top: 20px;
-}
-
-.choice-start-btn,
-#two-player-btn {
-  padding: 30px;
-  font-size: 2rem;
-  cursor: pointer;
-  
-  background-color: whitesmoke;
-  color: rgb(20, 20, 20);
-  border: none;
-  border-radius: 5px;
-}
-
-#two-player-btn {
-  margin-right: 40px;
-}
-
-.choice-start-btn {
-  margin-left: 40px;
-}
-
-.choice-footer {
-  grid-area: 4 / 1 / 5 / 2;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 1rem;
-}
-
 /* First Page */
 
 #start-page {
@@ -183,20 +125,7 @@ div > label {
   align-items: end;
 }
 
-#cpu-game {
-  grid-area: 1 / 1 / 2 / 2;
-  
-  font-size: 3rem;
-  padding: 30px;
-  margin-bottom: 50px;
-
-  display: flex;
-  justify-content: center;
-  align-items: end;
-}
-
-#resetBtn,
-#cpu-resetBtn {
+#resetBtn {
   grid-area: 2 / 1 / 3 / 2;
 
   display: flex;
@@ -204,9 +133,7 @@ div > label {
   align-items: start;
 }
 
-
-#gridButton,
-#cpu-gridButton { 
+#gridButton { 
   padding: 30px;
   font-size: 3rem;
   cursor: pointer;
@@ -216,9 +143,9 @@ div > label {
   border: none;
 }
 
-#gridButton:hover,
-#cpu-gridButton:hover {
+#gridButton:hover {
   font-size: 3.1rem;
+
 }
 
 
@@ -249,8 +176,7 @@ div > label {
 }
 
 
-#turn,
-#cpu-turn {
+#turn {
   grid-area: 2 / 1 / 3 / 2;
 
   display: flex;
@@ -261,8 +187,8 @@ div > label {
   font-weight: 700;
 }
 
-#body,
-#cpu-body {
+
+#body {
   grid-area: 3 / 1 / 4 / 2;
 
   display: grid;
@@ -372,8 +298,7 @@ div > label {
   font-size: 2rem;
 }
 
-.player,
-.computer {
+.player {
   padding-bottom: 20px;
 }
 
