@@ -188,7 +188,7 @@ div > label {
 }
 
 
-#cpu-body {
+#body {
   grid-area: 3 / 1 / 4 / 2;
 
   display: grid;
@@ -298,8 +298,7 @@ div > label {
   font-size: 2rem;
 }
 
-.player,
-.computer {
+.player {
   padding-bottom: 20px;
 }
 

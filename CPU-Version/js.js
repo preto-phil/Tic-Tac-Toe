@@ -1,22 +1,3 @@
-//  Display first turn
-
-const firstTurn = (() => {
-  function firstXTurn() {
-    let startButton = document.getElementById('start-btn');
-    startButton.addEventListener('click', () => {
-      let turnDiv = document.getElementById('turn');
-      let xName = document.getElementById('p1-name').value;
-      let variable = 'Turn: ' + xName;
-      turnDiv.innerText = variable;
-    });
-  }
-
-  return {
-    firstXTurn,
-  };
-})();
-
-firstTurn.firstXTurn();
 
 // Toggle Page appear / disappear
 
@@ -24,11 +5,11 @@ const start = (() => {
   function startGame() {
     let startBtn = document.getElementById('start-btn');
     let startPage = document.getElementById('start-page');
-    let gamePage = document.getElementById('game-page');
+    let cpuPage = document.getElementById('cpu-page');
     _toggleNames();
     startBtn.addEventListener('click', () => {
       startPage.style.display = 'none';
-      gamePage.style.display = 'grid';
+      cpuPage.style.display = 'grid';
     });
   }
 
@@ -36,13 +17,8 @@ const start = (() => {
     let startBtn = document.getElementById('start-btn');
     startBtn.addEventListener('click', () => {
       let xName = document.getElementById('p1-name').value;
-      console.log(xName);
       let player1Name = document.getElementById('p1');
-      let oName = document.getElementById('p2-name').value;
-      console.log(oName);
-      let player2Name = document.getElementById('p2');
       player1Name.innerText = xName;
-      player2Name.innerText = oName;
     });
   }
 
@@ -111,13 +87,13 @@ const gameBoard = (() => {
   // Add Score
 
   const scoreDivX = document.getElementById('p1-score');
-  const scoreDivO = document.getElementById('p2-score');
+  const scoreDivCPU = document.getElementById('cpu-score');
   let oScore = 0;
   let xScore = 0;
 
   function addScore() {
     scoreDivX.innerText = xScore;
-    scoreDivO.innerText = oScore;
+    scoreDivCPU.innerText = oScore;
   }
 
   // Winning Conditions
@@ -156,21 +132,16 @@ const gameBoard = (() => {
     ) {
       win = true;
       oScore += 1;
-      let oName = document.getElementById('p2-name').value;
 
-      winner = oName + ' Wins!';
+      winner = 'Computer' + ' Wins!';
       _toggleWinner();
       _toggleReset();
     }
   }
 
 
-
-
-  // Create Game Board Section
-
   function createGameBoard() {
-    const body = document.getElementById('body');
+    const body = document.getElementById('cpu-body');
 
     for (let i = 0; i < 9; i++) {
       const number = i + 1;
@@ -188,6 +159,94 @@ const gameBoard = (() => {
         const turnDiv = document.getElementById('turn');
         let xName = document.getElementById('p1-name').value;
         let oName = document.getElementById('p2-name').value;
+
+        if (gameRemainder === 1) {
+          if (round < 10 && win === false) {
+            if (roundRemainder === 1 && items[i] === '') {
+              div.innerText = 'X';
+
+              items[i] = 'X';
+              console.log(items);
+
+              turnDiv.innerHTML = `Turn: ${oName}`;
+              _winX();
+              _toggleDraw();
+              toggleGame();
+              addScore();
+
+              round += 1;
+            } else if (items[i] === '') {
+              div.innerText = 'O';
+
+              items[i] = 'O';
+              console.log(items);
+
+              turnDiv.innerHTML = `Turn: ${xName}`;
+              _winO();
+              _toggleDraw();
+              toggleGame();
+              addScore();
+
+              round += 1;
+            }
+          }
+        }
+        if (gameRemainder === 0) {
+          if (round < 10 && win === false) {
+            if (roundRemainder === 1 && items[i] === '') {
+              div.innerText = 'O';
+
+              items[i] = 'O';
+              console.log(items);
+
+              turnDiv.innerHTML = `Turn: ${xName}`;
+              _winO();
+              _toggleDraw();
+              toggleGame();
+              addScore();
+
+              round += 1;
+            } else if (items[i] === '') {
+              div.innerText = 'X';
+
+              items[i] = 'X';
+              console.log(items);
+
+              turnDiv.innerHTML = `Turn: ${oName}`;
+              _winX();
+              _toggleDraw();
+              toggleGame();
+              addScore();
+
+              round += 1;
+            }
+          }
+        }
+      });
+      body.append(div);
+    }
+  }
+
+  // Create Game Board Section
+
+/*   function createGameBoard() {
+    const body = document.getElementById('cpu-body');
+
+    for (let i = 0; i < 9; i++) {
+      const number = i + 1;
+      const className = `item-${number}`;
+
+      const div = document.createElement('div');
+
+      div.classList.add(className);
+      div.classList.add('grid');
+      div.setAttribute('data-index', i);
+      div.textContent = '';
+      div.addEventListener('click', () => {
+        let roundRemainder = round % 2;
+        let gameRemainder = game % 2;
+        const turnDiv = document.getElementById('turn');
+        let xName = document.getElementById('p1-name').value;
 
         if (gameRemainder === 1) {
           if (round < 10 && win === false) {
@@ -248,9 +307,8 @@ const gameBoard = (() => {
               if (cpuMove === 9) {
                 div.innerText = 'O';
                 items[i] = 'O';
-              }            
+              }             
 
-              turnDiv.innerHTML = `Turn: ${oName}`;
               _winX();
               _toggleDraw();
               toggleGame();
@@ -267,7 +325,7 @@ const gameBoard = (() => {
               for (let j = n - 1; j > 0 ; j--) {
                 let k = Math.floor(Math.random() * (i + 1));
                 [n[j], n[k]] = [n[k], n[j]];
-              } */
+              }
               
               div.innerText = 'O';
 
@@ -318,7 +376,7 @@ const gameBoard = (() => {
       });
       body.append(div);
     }
-  }
+  } */
 
   // Function to clear board
 
