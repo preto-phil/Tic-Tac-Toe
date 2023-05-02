@@ -15,10 +15,10 @@
     <div class="decision">The choice is yours!</div>
     <div class="choice-buttons">
       <div class="btn-2p">
-        <button id="two-player-btn">Two Player Game</button>
+        <button id="two-player-btn" onclick="twoPlayerChoice()">Two Player Game</button>
       </div>
       <div class="btn-cpu">
-        <button class="choice-start-btn" id="start-btn">Game VS Computer</button>
+        <button class="choice-start-btn" onclick="computerChoice()">Game VS Computer</button>
       </div>
     </div>
     <div class="choice-footer">Made by preto-phil</div>
@@ -40,7 +40,7 @@
     <div class="start-footer">Made by preto-phil</div>
   </div>
 
-  <div id="cpu-page" style="display: none;">
+  <div id="game-page" style="display: none;">
     <div class="left-section">
       <div id="game"></div>
       <div id="resetBtn">
@@ -51,12 +51,35 @@
     
       <div class="header">Tic Tac Toe</div>
       <div id="turn"></div>
-      <div id="cpu-body"></div>
+      <div id="body"></div>
       <div class="footer">Made by preto-phil</div>
     </div>
     <div class="right-section">
       <div class="player p1" id="p1"></div>
       <div id="p1-score"></div>
+      <div class="versus">vs</div>
+      <div class="player p2" id="p2"></div>
+      <div id="p2-score"></div>
+    </div>
+  </div>
+
+  <div id="cpu-page" style="display: none;">
+    <div class="left-section">
+      <div id="cpu-game"></div>
+      <div id="cpu-resetBtn">
+        <button id="cpu-gridButton" style="display: none;">Reset</button>
+      </div>
+    </div>
+    <div class="middle-section">
+    
+      <div class="header">Tic Tac Toe</div>
+      <div id="cpu-turn"></div>
+      <div id="cpu-body"></div>
+      <div class="footer">Made by preto-phil</div>
+    </div>
+    <div class="right-section">
+      <div class="player p1" id="p1">Homo Sapiens</div>
+      <div id="hs-score"></div>
       <div class="versus">vs</div>
       <div class="computer" id="cpu">Computer</div>
       <div id="cpu-score"></div>
