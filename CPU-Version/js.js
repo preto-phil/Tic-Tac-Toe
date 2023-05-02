@@ -139,6 +139,106 @@ const gameBoard = (() => {
     }
   }
 
+  // CPU Move Function
+
+  function _cpuMoveFunction() {
+
+    let cpuMove = Math.floor(Math.random() * 9) + 1;
+    console.log(cpuMove);
+  
+    let div1 = document.getElementById('0');
+    let div2 = document.getElementById('1');
+    let div3 = document.getElementById('2');
+    let div4 = document.getElementById('3');
+    let div5 = document.getElementById('4');
+    let div6 = document.getElementById('5');
+    let div7 = document.getElementById('6');
+    let div8 = document.getElementById('7');
+    let div9 = document.getElementById('8');
+    
+    if (cpuMove === 1 && items[0] === '') {
+      div1.innerText = 'O';
+      items[0] = 'O';
+      return;
+    }
+    if (cpuMove === 1 && items[0] !== '') {
+      _cpuMoveFunction();
+    }
+  
+    if (cpuMove === 2 && items[1] === '') {
+      div2.innerText = 'O';
+      items[1] = 'O';
+      return;
+    }
+    if (cpuMove === 2 && items[1] !== ''){
+      _cpuMoveFunction();
+    }
+  
+    if (cpuMove === 3 && items[2] === '') {
+      div3.innerText = 'O';
+      items[2] = 'O';
+      return;
+    }
+    if (cpuMove === 3 && items[2] !== '') {
+      _cpuMoveFunction();
+    }
+  
+    if (cpuMove === 4 && items[3] === '') {
+      div4.innerText = 'O';
+      items[3] = 'O';
+      return;
+    }
+    if (cpuMove === 4 && items[3] !== '') {
+      _cpuMoveFunction();
+    }
+  
+    if (cpuMove === 5 && items[4] === '') {
+      div5.innerText = 'O';
+      items[4] = 'O';
+      return;
+    }
+    if (cpuMove === 5 && items[4] !== '') {
+      _cpuMoveFunction();
+    }
+  
+    if (cpuMove === 6 && items[5] === '') {
+      div6.innerText = 'O';
+      items[5] = 'O';
+      return;
+    }
+    if (cpuMove === 6 && items[5] !== '') {
+      _cpuMoveFunction();
+    }
+  
+    if (cpuMove === 7 && items[6] === '') {
+      div7.innerText = 'O';
+      items[6] = 'O';
+      return;
+    }
+    if (cpuMove === 7 && items[6] !== '') {
+      _cpuMoveFunction();
+    }
+  
+    if (cpuMove === 8 && items[7] === '') {
+      div8.innerText = 'O';
+      items[7] = 'O';
+      return;
+    } 
+    if (cpuMove === 8 && items[7] !== '') {
+      _cpuMoveFunction();
+    }
+  
+    if (cpuMove === 9 && items[8] === '') {
+      div9.innerText = 'O';
+      items[8] = 'O';
+      return;
+    }
+    if (cpuMove === 9 && items[8] !== '') {
+      _cpuMoveFunction();
+    }
+  }
+
+
   // Create Game Board Section
 
   function createGameBoard() {
@@ -152,69 +252,31 @@ const gameBoard = (() => {
 
       div.classList.add(className);
       div.classList.add('grid');
-      div.setAttribute('data-index', i);
+      div.setAttribute('id', i);
       div.textContent = '';
       div.addEventListener('click', () => {
-        let roundRemainder = round % 2;
-        let gameRemainder = game % 2;
-        let xName = document.getElementById('p1-name').value;
 
-        if (gameRemainder === 1) {
-          if (round < 10 && win === false) {
-            if (roundRemainder === 1 && items[i] === '') {
-              div.innerText = 'X';
+        if (round < 10 && win === false) {
+          if (items[i] === '') {
+            div.innerText = 'X';
 
-              items[i] = 'X';
-              console.log(items);
+            items[i] = 'X';
+            console.log(items);
 
-              _winX();
-              _toggleDraw();
-              toggleGame();
-              addScore();
+            _winX();
+            _toggleDraw();
+            toggleGame();
+            addScore();
 
-              round += 1;
-            } else if (items[i] === '') {
-              
-              // Insert CPU move here 
-              div.innerText = 'O';
+            round += 1;
 
-              items[i] = 'O';
-              console.log(items);
+            if (win === false) {
+              _cpuMoveFunction();
 
               _winO();
               _toggleDraw();
               toggleGame();
               addScore();
-
-              round += 1;
-            }
-          }
-        }
-        if (gameRemainder === 0) {
-          if (round < 10 && win === false) {
-            if (roundRemainder === 1 && items[i] === '') {
-              div.innerText = 'O';
-
-              items[i] = 'O';
-              console.log(items);
-
-              _winO();
-              _toggleDraw();
-              toggleGame();
-              addScore();
-
-              round += 1;
-            } else if (items[i] === '') {
-              div.innerText = 'X';
-
-              items[i] = 'X';
-              console.log(items);
-
-              _winX();
-              _toggleDraw();
-              toggleGame();
-              addScore();
-
               round += 1;
             }
           }
@@ -225,78 +287,6 @@ const gameBoard = (() => {
   }
 
 
-/*               // Get CPU Move
-
-              let cpuMove = Math.floor(Math.random() * 9) + 1;
-            
-              while ((cpuMove == 1 && (items[0] != ''))
-                || (cpuMove == 2 && (items[0] != ''))
-                || (cpuMove == 3 && (items[0] != ''))
-                || (cpuMove == 4 && (items[0] != ''))
-                || (cpuMove == 5 && (items[0] != ''))
-                || (cpuMove == 6 && (items[0] != ''))
-                || (cpuMove == 7 && (items[0] != ''))
-                || (cpuMove == 8 && (items[0] != ''))
-                || (cpuMove == 9 && (items[0] != ''))) {
-                cpuMove = Math.floor(Math.random() * 9) + 1;
-              }
-              
-              if (cpuMove === 1) {
-                div.innerText = 'O';
-                items[i] = 'O';
-              }
-              if (cpuMove === 2) {
-                div.innerText = 'O';
-                items[i] = 'O';
-              }
-              if (cpuMove === 3) {
-                div.innerText = 'O';
-                items[i] = 'O';
-              }
-              if (cpuMove === 4) {
-                div.innerText = 'O';
-                items[i] = 'O';
-              }
-              if (cpuMove === 5) {
-                div.innerText = 'O';
-                items[i] = 'O';
-              }
-              if (cpuMove === 6) {
-                div.innerText = 'O';
-                items[i] = 'O';
-              }
-              if (cpuMove === 7) {
-                div.innerText = 'O';
-                items[i] = 'O';
-              }
-              if (cpuMove === 8) {
-                div.innerText = 'O';
-                items[i] = 'O';
-              }
-              if (cpuMove === 9) {
-                div.innerText = 'O';
-                items[i] = 'O';
-              }             
-
-              _winX();
-              _toggleDraw();
-              toggleGame();
-              addScore();
-              
-              
-
-              round += 1;
-            } else if (items[i] === '') {
- 
-              let n = items.length;
-              let randomIndex = Math.floor(Math.random() * (n + 1));
-              n.splice(randomIndex, 0, 'O'); 
-              for (let j = n - 1; j > 0 ; j--) {
-                let k = Math.floor(Math.random() * (i + 1));
-                [n[j], n[k]] = [n[k], n[j]];
-              }
-
- */
   // Function to clear board
 
   function resetBoard() {
