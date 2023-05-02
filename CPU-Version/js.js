@@ -331,6 +331,26 @@ function twoPlayerChoice() {
 }
 
 
+//  Display first turn
+
+const firstTurn = (() => {
+  function firstXTurn() {
+    let startButton = document.getElementById('start-btn');
+    startButton.addEventListener('click', () => {
+      let turnDiv = document.getElementById('turn');
+      let xName = document.getElementById('p1-name').value;
+      let variable = 'Turn: ' + xName;
+      turnDiv.innerText = variable;
+    });
+  }
+
+  return {
+    firstXTurn,
+  };
+})();
+
+firstTurn.firstXTurn();
+
 // Toggle Page appear / disappear
 
 const start = (() => {
@@ -339,7 +359,7 @@ const start = (() => {
     let startPage = document.getElementById('start-page');
     let gamePage = document.getElementById('game-page');
     _toggleNames();
-    startBtn.addEventListener('click', () => {
+    startBtn.addEventListener('click', () => {    
       startPage.style.display = 'none';
       gamePage.style.display = 'grid';
     });
@@ -370,7 +390,7 @@ start.startGame();
 
 const gameBoard = (() => {
   // Array Declaration
-
+  
   let items = ['', '', '', '', '', '', '', '', ''];
 
   // Block variable declarations
