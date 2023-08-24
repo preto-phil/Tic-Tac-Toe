@@ -11,15 +11,11 @@ function computerChoice() {
   CPUGameBoard.addScore();
 }
 
-// Game board creation and game Module Patter
-
+// Game board creation and game Module Pattern
 const CPUGameBoard = (() => {
-  // Array Declaration
-
   let items = ['', '', '', '', '', '', '', '', ''];
 
   // Block variable declarations
-
   let win = false;
   let draw = false;
   let winner;
@@ -27,7 +23,6 @@ const CPUGameBoard = (() => {
   let game = 1;
 
   // Toggle reset button to appear
-
   function _toggleReset() {
     const targetDiv = document.getElementById('cpu-gridButton');
     if (win === true || draw === true) {
@@ -38,7 +33,6 @@ const CPUGameBoard = (() => {
   }
 
   // Toggle and Display Winner function
-
   function _toggleWinner() {
     const turnDiv = document.getElementById('cpu-turn');
 
@@ -48,7 +42,6 @@ const CPUGameBoard = (() => {
   }
 
   // Display draw
-
   function _toggleDraw() {
     const turnDiv = document.getElementById('cpu-turn');
 
@@ -60,14 +53,12 @@ const CPUGameBoard = (() => {
   }
 
   // Change game number
-
   function toggleGame() {
     const gameDiv = document.getElementById('cpu-game');
     gameDiv.innerText = `Game ${game}`;
   }
 
   // Add Score
-
   const scoreDivX = document.getElementById('hs-score');
   const scoreDivCPU = document.getElementById('cpu-score');
   let oScore = 0;
@@ -79,7 +70,6 @@ const CPUGameBoard = (() => {
   }
 
   // Winning Conditions
-
   function _winX() {
     if (
       (items[0] === 'X' && items[1] === 'X' && items[2] === 'X') ||
@@ -121,7 +111,6 @@ const CPUGameBoard = (() => {
   }
 
   // CPU Move Function
-
   function _cpuMoveFunction() {
 
     let cpuMove = Math.floor(Math.random() * 9) + 1;
@@ -219,9 +208,7 @@ const CPUGameBoard = (() => {
     }
   }
 
-
-  // Create Game Board Section
-
+  // Create Game Board Section - contains game loop
   function createCPUGameBoard() {
     const body = document.getElementById('cpu-body');
 
@@ -238,7 +225,8 @@ const CPUGameBoard = (() => {
       div.addEventListener('click', () => {
         let gameRemainder = game % 2;
         if (gameRemainder === 1) {
-          
+          // Can make it so that cpu moves first every second round
+          // cpu move needs to be triggered by clicking reset button
         }
         if (round < 10 && win === false) {
           if (items[i] === '') {
@@ -249,18 +237,15 @@ const CPUGameBoard = (() => {
 
             _winX();
             _toggleDraw();
-            toggleGame();
-            addScore();
 
             round += 1;
 
-            if (win === false || draw === true) {
+            if (win === false || draw === false) {
               _cpuMoveFunction();
 
               _winO();
               _toggleDraw();
-              toggleGame();
-              addScore();
+  
               round += 1;
             }
           }
@@ -272,7 +257,6 @@ const CPUGameBoard = (() => {
 
 
   // Function to clear board
-
   function resetBoard() {
     const resetButton = document.getElementById('cpu-gridButton');
     resetButton.addEventListener('click', () => {
@@ -286,6 +270,7 @@ const CPUGameBoard = (() => {
         createCPUGameBoard();
         game += 1;
         toggleGame();
+        addScore();
 
         const turnDiv = document.getElementById('cpu-turn');
         turnDiv.innerText = '';
@@ -322,7 +307,6 @@ const CPUGameBoard = (() => {
 ////// Two Player Version
 
 // Function that follows two player path 
-
 function twoPlayerChoice() {
   let choicePage = document.getElementById('choice-page');
   let startPage = document.getElementById('start-page');
@@ -330,29 +314,7 @@ function twoPlayerChoice() {
   startPage.style.display = 'grid';
 }
 
-
-//  Display first turn
-
-const firstTurn = (() => {
-  function firstXTurn() {
-    let startButton = document.getElementById('start-btn');
-    startButton.addEventListener('click', () => {
-      let turnDiv = document.getElementById('turn');
-      let xName = document.getElementById('p1-name').value;
-      let variable = 'Turn: ' + xName;
-      turnDiv.innerText = variable;
-    });
-  }
-
-  return {
-    firstXTurn,
-  };
-})();
-
-firstTurn.firstXTurn();
-
-// Toggle Page appear / disappear
-
+// Toggle Page appear / disappear - assign values to name div's
 const start = (() => {
   function startGame() {
     let startBtn = document.getElementById('start-btn');
@@ -386,15 +348,30 @@ const start = (() => {
 
 start.startGame();
 
-// Game board creation and game Module Patter
+//  Display first turn information
+const firstTurn = (() => {
+  function firstXTurn() {
+    let startButton = document.getElementById('start-btn');
+    startButton.addEventListener('click', () => {
+      let turnDiv = document.getElementById('turn');
+      let xName = document.getElementById('p1-name').value;
+      let variable = 'Turn: ' + xName;
+      turnDiv.innerText = variable;
+    });
+  }
 
+  return {
+    firstXTurn,
+  };
+})();
+
+firstTurn.firstXTurn();
+
+// Game board creation and game Module Pattern
 const gameBoard = (() => {
-  // Array Declaration
-  
   let items = ['', '', '', '', '', '', '', '', ''];
 
   // Block variable declarations
-
   let win = false;
   let draw = false;
   let winner;
@@ -402,7 +379,6 @@ const gameBoard = (() => {
   let game = 1;
 
   // Toggle reset button to appear
-
   function _toggleReset() {
     const targetDiv = document.getElementById('gridButton');
     if (win === true || draw === true) {
@@ -413,7 +389,6 @@ const gameBoard = (() => {
   }
 
   // Toggle and Display Winner function
-
   function _toggleWinner() {
     const turnDiv = document.getElementById('turn');
 
@@ -423,7 +398,6 @@ const gameBoard = (() => {
   }
 
   // Display draw
-
   function _toggleDraw() {
     const turnDiv = document.getElementById('turn');
 
@@ -435,14 +409,12 @@ const gameBoard = (() => {
   }
 
   // Change game number
-
   function toggleGame() {
     const gameDiv = document.getElementById('game');
     gameDiv.innerText = `Game ${game}`;
   }
 
   // Add Score
-
   const scoreDivX = document.getElementById('p1-score');
   const scoreDivO = document.getElementById('p2-score');
   let oScore = 0;
@@ -454,7 +426,6 @@ const gameBoard = (() => {
   }
 
   // Winning Conditions
-
   function _winX() {
     if (
       (items[0] === 'X' && items[1] === 'X' && items[2] === 'X') ||
@@ -497,8 +468,7 @@ const gameBoard = (() => {
     }
   }
 
-  // Create Game Board Section
-
+  // Create Game Board Section - contains game loop
   function createGameBoard() {
     const body = document.getElementById('body');
 
@@ -530,8 +500,6 @@ const gameBoard = (() => {
               turnDiv.innerHTML = `Turn: ${oName}`;
               _winX();
               _toggleDraw();
-              toggleGame();
-              addScore();
 
               round += 1;
             } else if (items[i] === '') {
@@ -543,8 +511,6 @@ const gameBoard = (() => {
               turnDiv.innerHTML = `Turn: ${xName}`;
               _winO();
               _toggleDraw();
-              toggleGame();
-              addScore();
 
               round += 1;
             }
@@ -561,8 +527,6 @@ const gameBoard = (() => {
               turnDiv.innerHTML = `Turn: ${xName}`;
               _winO();
               _toggleDraw();
-              toggleGame();
-              addScore();
 
               round += 1;
             } else if (items[i] === '') {
@@ -574,8 +538,6 @@ const gameBoard = (() => {
               turnDiv.innerHTML = `Turn: ${oName}`;
               _winX();
               _toggleDraw();
-              toggleGame();
-              addScore();
 
               round += 1;
             }
@@ -587,7 +549,6 @@ const gameBoard = (() => {
   }
 
   // Function to clear board
-
   function resetBoard() {
     const resetButton = document.getElementById('gridButton');
     resetButton.addEventListener('click', () => {
@@ -601,9 +562,9 @@ const gameBoard = (() => {
         createGameBoard();
         game += 1;
         toggleGame();
+        addScore();
 
         let gameRemainder = game % 2;
-        const turnDiv = document.getElementById('turn');
 
         if (gameRemainder === 1) {
           let turnDiv = document.getElementById('turn');
@@ -622,7 +583,6 @@ const gameBoard = (() => {
   }
 
   // Return Section
-
   return {
     createGameBoard,
     resetBoard,
@@ -632,7 +592,6 @@ const gameBoard = (() => {
 })();
 
 // Call Functions
-
 let startBtn = document.getElementById('start-btn');
 startBtn.addEventListener('click', () => {
   gameBoard.createGameBoard();
