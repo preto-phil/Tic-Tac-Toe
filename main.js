@@ -241,11 +241,12 @@ const CPUGameBoard = (() => {
             round += 1;
 
             if (win === false || draw === false) {
-              _cpuMoveFunction();
-
               _winO();
               _toggleDraw();
-  
+              if (win === false) {
+                _cpuMoveFunction();
+              }
+ 
               round += 1;
             }
           }
