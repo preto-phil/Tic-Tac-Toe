@@ -13,7 +13,7 @@ function computerChoice() {
 
 // Game board creation and game Module Pattern
 const CPUGameBoard = (() => {
-  let items = ['', '', '', '', '', '', '', '', ''];
+  let cells = ['', '', '', '', '', '', '', '', ''];
 
   // Block variable declarations
   let win = false;
@@ -72,14 +72,14 @@ const CPUGameBoard = (() => {
   // Winning Conditions
   function _winX() {
     if (
-      (items[0] === 'X' && items[1] === 'X' && items[2] === 'X') ||
-      (items[0] === 'X' && items[4] === 'X' && items[8] === 'X') ||
-      (items[0] === 'X' && items[3] === 'X' && items[6] === 'X') ||
-      (items[2] === 'X' && items[5] === 'X' && items[8] === 'X') ||
-      (items[2] === 'X' && items[4] === 'X' && items[6] === 'X') ||
-      (items[6] === 'X' && items[7] === 'X' && items[8] === 'X') ||
-      (items[3] === 'X' && items[4] === 'X' && items[5] === 'X') ||
-      (items[1] === 'X' && items[4] === 'X' && items[7] === 'X')
+      (cells[0] === 'X' && cells[1] === 'X' && cells[2] === 'X') ||
+      (cells[0] === 'X' && cells[4] === 'X' && cells[8] === 'X') ||
+      (cells[0] === 'X' && cells[3] === 'X' && cells[6] === 'X') ||
+      (cells[2] === 'X' && cells[5] === 'X' && cells[8] === 'X') ||
+      (cells[2] === 'X' && cells[4] === 'X' && cells[6] === 'X') ||
+      (cells[6] === 'X' && cells[7] === 'X' && cells[8] === 'X') ||
+      (cells[3] === 'X' && cells[4] === 'X' && cells[5] === 'X') ||
+      (cells[1] === 'X' && cells[4] === 'X' && cells[7] === 'X')
     ) {
       win = true;
       xScore += 1;
@@ -92,14 +92,14 @@ const CPUGameBoard = (() => {
 
   function _winO() {
     if (
-      (items[0] === 'O' && items[1] === 'O' && items[2] === 'O') ||
-      (items[0] === 'O' && items[4] === 'O' && items[8] === 'O') ||
-      (items[0] === 'O' && items[3] === 'O' && items[6] === 'O') ||
-      (items[2] === 'O' && items[5] === 'O' && items[8] === 'O') ||
-      (items[2] === 'O' && items[4] === 'O' && items[6] === 'O') ||
-      (items[6] === 'O' && items[7] === 'O' && items[8] === 'O') ||
-      (items[3] === 'O' && items[4] === 'O' && items[5] === 'O') ||
-      (items[1] === 'O' && items[4] === 'O' && items[7] === 'O')
+      (cells[0] === 'O' && cells[1] === 'O' && cells[2] === 'O') ||
+      (cells[0] === 'O' && cells[4] === 'O' && cells[8] === 'O') ||
+      (cells[0] === 'O' && cells[3] === 'O' && cells[6] === 'O') ||
+      (cells[2] === 'O' && cells[5] === 'O' && cells[8] === 'O') ||
+      (cells[2] === 'O' && cells[4] === 'O' && cells[6] === 'O') ||
+      (cells[6] === 'O' && cells[7] === 'O' && cells[8] === 'O') ||
+      (cells[3] === 'O' && cells[4] === 'O' && cells[5] === 'O') ||
+      (cells[1] === 'O' && cells[4] === 'O' && cells[7] === 'O')
     ) {
       win = true;
       oScore += 1;
@@ -112,150 +112,58 @@ const CPUGameBoard = (() => {
 
   // CPU Move Function
   function _cpuMoveFunction() {
-
-    let cpuMove = Math.floor(Math.random() * 9) + 1;
-    console.log(cpuMove);
+    let cpuMove;
+    // Create random cpuMove until an empty cell is found
+    do {
+      cpuMove = Math.floor(Math.random() * 9);
+    } while (cells[cpuMove] !== '');
   
-    let div1 = document.getElementById('0');
-    let div2 = document.getElementById('1');
-    let div3 = document.getElementById('2');
-    let div4 = document.getElementById('3');
-    let div5 = document.getElementById('4');
-    let div6 = document.getElementById('5');
-    let div7 = document.getElementById('6');
-    let div8 = document.getElementById('7');
-    let div9 = document.getElementById('8');
-    
-    if (cpuMove === 1 && items[0] === '') {
-      div1.innerText = 'O';
-      items[0] = 'O';
-      return;
-    }
-    if (cpuMove === 1 && items[0] !== '') {
-      _cpuMoveFunction();
-    }
-  
-    if (cpuMove === 2 && items[1] === '') {
-      div2.innerText = 'O';
-      items[1] = 'O';
-      return;
-    }
-    if (cpuMove === 2 && items[1] !== ''){
-      _cpuMoveFunction();
-    }
-  
-    if (cpuMove === 3 && items[2] === '') {
-      div3.innerText = 'O';
-      items[2] = 'O';
-      return;
-    }
-    if (cpuMove === 3 && items[2] !== '') {
-      _cpuMoveFunction();
-    }
-  
-    if (cpuMove === 4 && items[3] === '') {
-      div4.innerText = 'O';
-      items[3] = 'O';
-      return;
-    }
-    if (cpuMove === 4 && items[3] !== '') {
-      _cpuMoveFunction();
-    }
-  
-    if (cpuMove === 5 && items[4] === '') {
-      div5.innerText = 'O';
-      items[4] = 'O';
-      return;
-    }
-    if (cpuMove === 5 && items[4] !== '') {
-      _cpuMoveFunction();
-    }
-  
-    if (cpuMove === 6 && items[5] === '') {
-      div6.innerText = 'O';
-      items[5] = 'O';
-      return;
-    }
-    if (cpuMove === 6 && items[5] !== '') {
-      _cpuMoveFunction();
-    }
-  
-    if (cpuMove === 7 && items[6] === '') {
-      div7.innerText = 'O';
-      items[6] = 'O';
-      return;
-    }
-    if (cpuMove === 7 && items[6] !== '') {
-      _cpuMoveFunction();
-    }
-  
-    if (cpuMove === 8 && items[7] === '') {
-      div8.innerText = 'O';
-      items[7] = 'O';
-      return;
-    } 
-    if (cpuMove === 8 && items[7] !== '') {
-      _cpuMoveFunction();
-    }
-  
-    if (cpuMove === 9 && items[8] === '') {
-      div9.innerText = 'O';
-      items[8] = 'O';
-      return;
-    }
-    if (cpuMove === 9 && items[8] !== '') {
-      _cpuMoveFunction();
-    }
+    const cell = document.getElementById(`${cpuMove}`);
+    cell.innerText = 'O';
+    cells[cpuMove] = 'O';
   }
 
-  // Create Game Board Section - contains game loop
+  // Create Game Board Section which creates cells that call game loop when clicked
   function createCPUGameBoard() {
     const body = document.getElementById('cpu-body');
-
+  
     for (let i = 0; i < 9; i++) {
-      const number = i + 1;
-      const className = `item-${number}`;
-
-      const div = document.createElement('div');
-
-      div.classList.add(className);
-      div.classList.add('grid');
-      div.setAttribute('id', i);
-      div.textContent = '';
-      div.addEventListener('click', () => {
-        let gameRemainder = game % 2;
-        if (gameRemainder === 1) {
-          // Can make it so that cpu moves first every second round
-          // cpu move needs to be triggered by clicking reset button
-        }
-        if (round < 10 && win === false) {
-          if (items[i] === '') {
-            div.innerText = 'X';
-
-            items[i] = 'X';
-            console.log(items);
-
-            _winX();
-            _toggleDraw();
-
-            round += 1;
-
-            if (win === false || draw === false) {
-              _winO();
-              _toggleDraw();
-              if (win === false) {
-                _cpuMoveFunction();
-              }
- 
-              round += 1;
-            }
-          }
-        }
-      });
-      body.append(div);
+      createGridCell(body, i);
     }
   }
-
+  
+  function createGridCell(container, index) {
+    const number = index + 1;
+    const className = `cell-${number}`;
+  
+    const div = document.createElement('div');
+  
+    div.classList.add(className);
+    div.classList.add('grid');
+    div.setAttribute('id', index);
+    div.textContent = '';
+    div.addEventListener('click', () => handleGridCellClick(div, index));
+    container.append(div);
+  }
+  
+  function handleGridCellClick(div, index) {
+    if (round < 10 && win === false) {
+      if (cells[index] === '') {
+        div.innerText = 'X';
+        cells[index] = 'X';
+        _winX();
+        _toggleDraw();
+        round += 1;
+  
+        if (win === false && draw === false) {
+          _cpuMoveFunction();
+          _winO();
+          _toggleDraw();
+          round += 1;
+        }
+      }
+    }
+  }
 
   // Function to clear board
   function resetBoard() {
@@ -263,7 +171,7 @@ const CPUGameBoard = (() => {
     resetButton.addEventListener('click', () => {
       if (win === true || draw === true) {
         round = 1;
-        items = ['', '', '', '', '', '', '', '', ''];
+        cells = ['', '', '', '', '', '', '', '', ''];
         win = false;
         draw = false;
         const body = document.getElementById('cpu-body');
@@ -280,8 +188,6 @@ const CPUGameBoard = (() => {
       }
     });
   }
-
-  // Return Section
 
   return {
     createCPUGameBoard,
@@ -382,7 +288,7 @@ firstTurn.firstXTurn();
 
 // Game board creation and game Module Pattern
 const gameBoard = (() => {
-  let items = ['', '', '', '', '', '', '', '', ''];
+  let cells = ['', '', '', '', '', '', '', '', ''];
 
   // Block variable declarations
   let win = false;
@@ -441,14 +347,14 @@ const gameBoard = (() => {
   // Winning Conditions
   function _winX() {
     if (
-      (items[0] === 'X' && items[1] === 'X' && items[2] === 'X') ||
-      (items[0] === 'X' && items[4] === 'X' && items[8] === 'X') ||
-      (items[0] === 'X' && items[3] === 'X' && items[6] === 'X') ||
-      (items[2] === 'X' && items[5] === 'X' && items[8] === 'X') ||
-      (items[2] === 'X' && items[4] === 'X' && items[6] === 'X') ||
-      (items[6] === 'X' && items[7] === 'X' && items[8] === 'X') ||
-      (items[3] === 'X' && items[4] === 'X' && items[5] === 'X') ||
-      (items[1] === 'X' && items[4] === 'X' && items[7] === 'X')
+      (cells[0] === 'X' && cells[1] === 'X' && cells[2] === 'X') ||
+      (cells[0] === 'X' && cells[4] === 'X' && cells[8] === 'X') ||
+      (cells[0] === 'X' && cells[3] === 'X' && cells[6] === 'X') ||
+      (cells[2] === 'X' && cells[5] === 'X' && cells[8] === 'X') ||
+      (cells[2] === 'X' && cells[4] === 'X' && cells[6] === 'X') ||
+      (cells[6] === 'X' && cells[7] === 'X' && cells[8] === 'X') ||
+      (cells[3] === 'X' && cells[4] === 'X' && cells[5] === 'X') ||
+      (cells[1] === 'X' && cells[4] === 'X' && cells[7] === 'X')
     ) {
       win = true;
       xScore += 1;
@@ -462,14 +368,14 @@ const gameBoard = (() => {
 
   function _winO() {
     if (
-      (items[0] === 'O' && items[1] === 'O' && items[2] === 'O') ||
-      (items[0] === 'O' && items[4] === 'O' && items[8] === 'O') ||
-      (items[0] === 'O' && items[3] === 'O' && items[6] === 'O') ||
-      (items[2] === 'O' && items[5] === 'O' && items[8] === 'O') ||
-      (items[2] === 'O' && items[4] === 'O' && items[6] === 'O') ||
-      (items[6] === 'O' && items[7] === 'O' && items[8] === 'O') ||
-      (items[3] === 'O' && items[4] === 'O' && items[5] === 'O') ||
-      (items[1] === 'O' && items[4] === 'O' && items[7] === 'O')
+      (cells[0] === 'O' && cells[1] === 'O' && cells[2] === 'O') ||
+      (cells[0] === 'O' && cells[4] === 'O' && cells[8] === 'O') ||
+      (cells[0] === 'O' && cells[3] === 'O' && cells[6] === 'O') ||
+      (cells[2] === 'O' && cells[5] === 'O' && cells[8] === 'O') ||
+      (cells[2] === 'O' && cells[4] === 'O' && cells[6] === 'O') ||
+      (cells[6] === 'O' && cells[7] === 'O' && cells[8] === 'O') ||
+      (cells[3] === 'O' && cells[4] === 'O' && cells[5] === 'O') ||
+      (cells[1] === 'O' && cells[4] === 'O' && cells[7] === 'O')
     ) {
       win = true;
       oScore += 1;
@@ -487,7 +393,7 @@ const gameBoard = (() => {
 
     for (let i = 0; i < 9; i++) {
       const number = i + 1;
-      const className = `item-${number}`;
+      const className = `cell-${number}`;
 
       const div = document.createElement('div');
 
@@ -504,22 +410,22 @@ const gameBoard = (() => {
 
         if (gameRemainder === 1) {
           if (round < 10 && win === false) {
-            if (roundRemainder === 1 && items[i] === '') {
+            if (roundRemainder === 1 && cells[i] === '') {
               div.innerText = 'X';
 
-              items[i] = 'X';
-              console.log(items);
+              cells[i] = 'X';
+              console.log(cells);
 
               turnDiv.innerHTML = `Turn: ${oName}`;
               _winX();
               _toggleDraw();
 
               round += 1;
-            } else if (items[i] === '') {
+            } else if (cells[i] === '') {
               div.innerText = 'O';
 
-              items[i] = 'O';
-              console.log(items);
+              cells[i] = 'O';
+              console.log(cells);
 
               turnDiv.innerHTML = `Turn: ${xName}`;
               _winO();
@@ -531,22 +437,22 @@ const gameBoard = (() => {
         }
         if (gameRemainder === 0) {
           if (round < 10 && win === false) {
-            if (roundRemainder === 1 && items[i] === '') {
+            if (roundRemainder === 1 && cells[i] === '') {
               div.innerText = 'O';
 
-              items[i] = 'O';
-              console.log(items);
+              cells[i] = 'O';
+              console.log(cells);
 
               turnDiv.innerHTML = `Turn: ${xName}`;
               _winO();
               _toggleDraw();
 
               round += 1;
-            } else if (items[i] === '') {
+            } else if (cells[i] === '') {
               div.innerText = 'X';
 
-              items[i] = 'X';
-              console.log(items);
+              cells[i] = 'X';
+              console.log(cells);
 
               turnDiv.innerHTML = `Turn: ${oName}`;
               _winX();
@@ -567,7 +473,7 @@ const gameBoard = (() => {
     resetButton.addEventListener('click', () => {
       if (win === true || draw === true) {
         round = 1;
-        items = ['', '', '', '', '', '', '', '', ''];
+        cells = ['', '', '', '', '', '', '', '', ''];
         win = false;
         draw = false;
         const body = document.getElementById('body');
