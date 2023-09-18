@@ -291,6 +291,18 @@ const CPUGameBoard = (() => {
   };
 })();
 
+// Add a click event listener to the cpu home button
+const cpuHomeBtn = document.getElementById("cpu-homeBtn");
+
+cpuHomeBtn.addEventListener("click", () => {
+  let choicePage = document.getElementById('choice-page');
+  let cpuPage = document.getElementById('cpu-page');
+  choicePage.style.display = 'grid';
+  cpuPage.style.display = 'none';
+
+  window.location.reload();
+});
+
 ///////////////////////////////////////////////////////////
 
 
@@ -601,9 +613,14 @@ startBtn.addEventListener('click', () => {
   gameBoard.addScore();
 });
 
+// Add a click event listener to the home button
 const homeBtn = document.getElementById("homeBtn");
 
-// Add a click event listener to the button
 homeBtn.addEventListener("click", () => {
+  let choicePage = document.getElementById('choice-page');
+  let gamePage = document.getElementById('game-page');
+  choicePage.style.display = 'grid';
+  gamePage.style.display = 'none';
+
   window.location.reload();
 });

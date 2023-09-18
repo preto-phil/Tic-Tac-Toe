@@ -168,27 +168,15 @@ div > label {
   /* border: 1px solid blue; */
 
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: 2.5fr 1fr 2.5fr;
 }
 
-#game {
-  grid-area: 1 / 1 / 2 / 2;
-  
-  font-size: 3rem;
-  padding: 30px;
-  margin-bottom: 50px;
-
-  display: flex;
-  justify-content: center;
-  align-items: end;
-}
-
+#game,
 #cpu-game {
   grid-area: 1 / 1 / 2 / 2;
   
   font-size: 3rem;
   padding: 30px;
-  margin-bottom: 50px;
 
   display: flex;
   justify-content: center;
@@ -201,7 +189,7 @@ div > label {
 
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: center;
 }
 
 #homeBtn,
@@ -211,6 +199,10 @@ div > label {
   display: flex;
   justify-content: center;
   align-items: start;
+}
+
+svg {
+  width: 50px;
 }
 
 #gridButton,
