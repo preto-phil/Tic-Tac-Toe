@@ -349,8 +349,8 @@ const start = (() => {
       let oName = document.getElementById('p2-name').value;
       console.log(oName);
       let player2Name = document.getElementById('p2');
-      player1Name.innerText = xName;
-      player2Name.innerText = oName;
+      player1Name.innerText = xName || "Player X";
+      player2Name.innerText = oName || "Player O";
     });
   }
 
