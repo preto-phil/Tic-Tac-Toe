@@ -600,3 +600,10 @@ startBtn.addEventListener('click', () => {
   gameBoard.toggleGame();
   gameBoard.addScore();
 });
+
+const homeBtn = document.getElementById("homeBtn");
+
+// Add a click event listener to the button
+homeBtn.addEventListener("click", () => {
+  window.location.reload();
+});

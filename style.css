@@ -168,7 +168,7 @@ div > label {
   /* border: 1px solid blue; */
 
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
 }
 
 #game {
@@ -204,9 +204,18 @@ div > label {
   align-items: start;
 }
 
+#homeBtn,
+#cpu-homeBtn {
+  grid-area: 3 / 1 / 4 / 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
 
 #gridButton,
-#cpu-gridButton { 
+#cpu-gridButton,
+.homeButton { 
   padding: 30px;
   font-size: 3rem;
   cursor: pointer;
