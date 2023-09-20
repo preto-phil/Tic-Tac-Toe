@@ -1,30 +1,48 @@
-# Tic-Tac-Toe
-The Odin Project JavaScript: Tic Tac Toe Project
+# Tic-Tac-Toe Project
 
-<h2>Instructions</h2>
+## Overview
 
-<ol>
-  <li>Set up your project with HTML, CSS and Javascript files and get the Git repo all set up.</li>
-  <li>You’re going to store the gameboard as an array inside of a Gameboard object, so start there! Your players are also going to be stored in objects, and you’re probably going to want an object to control the flow of the game itself.
-    <ul>
-    <li>Your main goal here is to have as little global code as possible. Try tucking everything away inside of a module or factory. Rule of thumb: if you only ever need ONE of something (gameBoard, displayController), use a module. If you need multiples of something (players!), create them with factories.</li>
-    </ul>
-  </li>
-  <li>Set up your HTML and write a JavaScript function that will render the contents of the gameboard array to the webpage (for now you can just manually fill in the array with "X"s and "O"s)
-  </li>
-  <li>Build the functions that allow players to add marks to a specific spot on the board, and then tie it to the DOM, letting players click on the gameboard to place their marker. Don’t forget the logic that keeps players from playing in spots that are already taken!
-    <ul>
-      <li>Think carefully about where each bit of logic should reside. Each little piece of functionality should be able to fit in the game, player or gameboard objects. Take care to put them in “logical” places. Spending a little time brainstorming here can make your life much easier later!</li>
-      <li>If you’re having trouble, <a href="https://www.ayweb.dev/blog/building-a-house-from-the-inside-out">Building a house from the inside out</a> is a great article that lays out a highly applicable example of how you might organize your code for this project.</li>
-    </ul>
-  </li>
-  <li>Build the logic that checks for when the game is over! Should check for 3-in-a-row and a tie.</li>
-  <li>Clean up the interface to allow players to put in their names, include a button to start/restart the game and add a display element that congratulates the winning player!</li>
-  <li>Optional - If you’re feeling ambitious create an AI so that a player can play against the computer!
-    <ul>
-      <li>Start by just getting the computer to make a random legal move.</li>
-      <li>Once you’ve gotten that, work on making the computer smart. It is possible to create an unbeatable AI using the minimax algorithm (read about it <a href="https://en.wikipedia.org/wiki/Minimax">here</a>, some googling will help you out with this one)</li>
-      <li>If you get this running definitely come show it off in the chatroom. It’s quite an accomplishment!</li>
-    </ul>
-  </li>
-</ol>
+Welcome to my Tic-Tac-Toe project, completed as part of The Odin Project curriculum. This classic game is built using HTML, CSS, and JavaScript. In this README, I'll provide an overview of the project, its features, and the instructions for playing the game.
+
+![Tic-Tac-Toe Screenshot](./src/images/tic-tac-toe-screenshot.png)
+
+## Technologies Used
+
+- HTML
+- CSS
+- JavaScript
+
+## Project Features
+
+- **HTML, CSS, and JavaScript**: This project utilizes the power of these three core web technologies to create an interactive Tic-Tac-Toe game.
+
+- **Multiplayer and Single Player Modes**: The game supports both two-player and single-player modes. In single-player mode, you can play against the computer.
+
+- **Game Logic**: The game's logic is encapsulated within objects, including the Gameboard, Player, and Game objects. This modular approach minimizes global code and enhances code organization.
+
+- **Dynamic Rendering**: JavaScript functions render the gameboard array onto the webpage, allowing players to visualize and interact with the game.
+
+- **Player Interaction**: Players can click on the gameboard to place their markers (X or O). The logic prevents players from playing in spots that are already taken, ensuring a fair game.
+
+- **Winning Conditions**: The game checks for winning conditions, including 3-in-a-row and a tie. When a player wins or the game ends in a tie, a display element congratulates the winning player or announces the tie.
+
+
+## What I've Learned
+
+- During this project, I gained valuable experience in using HTML, CSS, and JavaScript to create an interactive web application.
+
+- I improved my understanding of modular programming by encapsulating game logic within objects, resulting in cleaner and more maintainable code.
+
+- I enhanced my problem-solving skills by implementing various DOM manipulation.
+
+## Future Improvements
+
+- Implement the minimax algorithm to create an unbeatable computer opponent in single-player mode.
+
+- Add sound effects and animations to make the game more engaging.
+
+- Improve the user interface and overall design for a more polished look and more responsiveness.
+
+- Optimize the code for better performance and compatibility across various devices and browsers.
+
+- Refactor code to minimize coupling and duplication.
