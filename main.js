@@ -273,7 +273,7 @@ const firstTurn = (() => {
     let startButton = document.getElementById('start-btn');
     startButton.addEventListener('click', () => {
       let turnDiv = document.getElementById('turn');
-      let xName = document.getElementById('p1-name').value;
+      let xName = document.getElementById('p1-name').value || 'Player X';
       let variable = 'Turn: ' + xName;
       turnDiv.innerText = variable;
     });
@@ -359,7 +359,7 @@ const gameBoard = (() => {
       win = true;
       xScore += 1;
 
-      let xName = document.getElementById('p1-name').value;
+      let xName = document.getElementById('p1-name').value || 'Player X';
       winner = xName + ' Wins!';
       _toggleWinner();
       _toggleReset();
@@ -379,7 +379,7 @@ const gameBoard = (() => {
     ) {
       win = true;
       oScore += 1;
-      let oName = document.getElementById('p2-name').value;
+      let oName = document.getElementById('p2-name').value || 'Player O';
 
       winner = oName + ' Wins!';
       _toggleWinner();
@@ -405,8 +405,8 @@ const gameBoard = (() => {
         let roundRemainder = round % 2;
         let gameRemainder = game % 2;
         const turnDiv = document.getElementById('turn');
-        let xName = document.getElementById('p1-name').value;
-        let oName = document.getElementById('p2-name').value;
+        let xName = document.getElementById('p1-name').value || 'Player X';
+        let oName = document.getElementById('p2-name').value || 'Player O';
 
         if (gameRemainder === 1) {
           if (round < 10 && win === false) {
@@ -487,12 +487,12 @@ const gameBoard = (() => {
 
         if (gameRemainder === 1) {
           let turnDiv = document.getElementById('turn');
-          let xName = document.getElementById('p1-name').value;
+          let xName = document.getElementById('p1-name').value  || 'Player X';
           let variable = 'Turn: ' + xName;
           turnDiv.innerText = variable;
         } else {
           let turnDiv = document.getElementById('turn');
-          let oName = document.getElementById('p2-name').value;
+          let oName = document.getElementById('p2-name').value  || 'Player O';
           let variable = 'Turn: ' + oName;
           turnDiv.innerText = variable;
         }
